@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-require 'spec_helper'
+require "spec_helper"
 
 ##
 # When our catalog records contain outdated subject headings, we need the ability
 # to update them at index time to preferred terms.
 RSpec.describe ChangeTheSubject do
-  context 'with the real configuration' do
+  context "with the real configuration" do
     it "suggests a replacement" do
       expect(described_class.check_for_replacement("Illegal aliens")).to eq "Undocumented immigrants"
       expect(described_class.check_for_replacement("Illegal immigration")).to eq "Undocumented immigrants"
@@ -34,8 +34,8 @@ RSpec.describe ChangeTheSubject do
     end
   end
 
-  context 'with a mocked configuration' do
-    let(:fixture_config) { File.join('spec', 'fixtures', 'change_the_subject.yml') }
+  context "with a mocked configuration" do
+    let(:fixture_config) { File.join("spec", "fixtures", "change_the_subject.yml") }
 
     before do
       allow(described_class).to receive(:change_the_subject_config_file).and_return(fixture_config)
@@ -84,7 +84,7 @@ RSpec.describe ChangeTheSubject do
       end
     end
 
-    context 'subject terms with both the original and mapped term' do
+    context "subject terms with both the original and mapped term" do
       let(:subject_terms) { ["Illegal aliens", "Undocumented immigrants"] }
       let(:fixed_subject_terms) { ["Undocumented immigrants"] }
 
@@ -93,8 +93,8 @@ RSpec.describe ChangeTheSubject do
       end
     end
 
-    context 'subject terms that have empty replacements' do
-      let(:subject_terms) { ['Test term', "Illegal aliens"] }
+    context "subject terms that have empty replacements" do
+      let(:subject_terms) { ["Test term", "Illegal aliens"] }
       let(:fixed_subject_terms) { ["Undocumented immigrants"] }
 
       it "suggests a replacement" do
@@ -102,7 +102,7 @@ RSpec.describe ChangeTheSubject do
       end
     end
 
-    context 'Indigenous studies terms' do
+    context "Indigenous studies terms" do
       let(:subject_terms) { ["Indians of North America—Connecticut"] }
       let(:fixed_subject_terms) { ["Indigenous peoples of North America—Connecticut"] }
 
