@@ -1,8 +1,13 @@
 version: 2.1
 jobs:
-  build:
+  test:
+    parameters:
+      ruby:
+        description: "Ruby version"
+        default: "2.7.5"
+        type: "string"
     docker:
-      - image: ruby:3.0.0
+      - image: cimg/ruby:<< parameters.ruby >>
     steps:
       - checkout
       - run:
@@ -11,3 +16,11 @@ jobs:
             gem install bundler -v 2.2.3
             bundle install
             bundle exec rake
+
+workflows:
+  all-tests:
+    jobs:
+      - test:
+          matrix:
+            parameters:
+              ruby: ["2.7.5", "3.0.0"]
