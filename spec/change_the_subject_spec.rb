@@ -100,7 +100,7 @@ RSpec.describe ChangeTheSubject do
       let(:fixed_subject_terms) { ["Indigenous peoples of North America || Connecticut"] }
 
       it "uses correct separator" do
-        expect(described_class.fix(subject_terms: subject_terms, separator: ' || ')).to eq fixed_subject_terms
+        expect(described_class.fix(subject_terms: subject_terms, separator: " || ")).to eq fixed_subject_terms
       end
     end
   end
