@@ -13,13 +13,26 @@ jobs:
       - run:
           name: Run the default task
           command: |
-            gem install bundler -v 2.2.3
+            gem install bundler -v 2.3.18
             bundle install
             bundle exec rake
+  rubocop:
+    parameters:
+    docker:
+      - image: cimg/ruby:3.0.0
+    steps:
+      - checkout
+      - run:
+          name: Run rubocop
+          command: |
+            gem install bundler -v 2.3.18
+            bundle install
+            bundle exec rubocop
 
 workflows:
   all-tests:
     jobs:
+      - rubocop
       - test:
           matrix:
             parameters:
