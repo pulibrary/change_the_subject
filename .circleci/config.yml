@@ -13,7 +13,7 @@ jobs:
       - run:
           name: Run the default task
           command: |
-            gem install bundler -v 2.2.3
+            gem install bundler -v 2.3.18
             bundle install
             bundle exec rake
   rubocop:
@@ -25,7 +25,7 @@ jobs:
       - run:
           name: Run rubocop
           command: |
-            gem install bundler -v 2.2.3
+            gem install bundler -v 2.3.18
             bundle install
             bundle exec rubocop
 
