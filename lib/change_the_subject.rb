@@ -1,7 +1,5 @@
 # frozen_string_literal: true
 
-require_relative "change_the_subject/version"
-require "pry-byebug"
 require "yaml"
 
 # The creation and management of metadata are not neutral activities.
