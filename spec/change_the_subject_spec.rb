@@ -101,6 +101,24 @@ RSpec.describe ChangeTheSubject do
     end
   end
 
+  context "with the default separator" do
+    let(:subject_terms) { ["Indians of North America—Connecticut"] }
+    let(:fixed_subject_terms) { ["Indigenous peoples of North America—Connecticut"] }
+
+    it "uses correct separator" do
+      expect(described_class.fix(subject_terms: subject_terms)).to eq fixed_subject_terms
+    end
+  end
+
+  context "with an alternate separator" do
+    let(:subject_terms) { ["Indians of North America || Connecticut"] }
+    let(:fixed_subject_terms) { ["Indigenous peoples of North America || Connecticut"] }
+
+    it "uses correct separator" do
+      expect(described_class.fix(subject_terms: subject_terms, separator: " || ")).to eq fixed_subject_terms
+    end
+  end
+
   context "with an unparseable configuration file" do
     before do
       allow(YAML).to receive(:safe_load).and_raise(StandardError)
