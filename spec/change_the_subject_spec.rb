@@ -100,4 +100,14 @@ RSpec.describe ChangeTheSubject do
       expect(described_class.fix(subject_terms: subject_terms)).to eq fixed_subject_terms
     end
   end
+
+  context "with an unparseable configuration file" do
+    before do
+      allow(YAML).to receive(:safe_load).and_raise(StandardError)
+    end
+
+    it "raises a ChangeTheSubjectError" do
+      expect { described_class.fix(subject_terms: ["term"]) }.to raise_error(ChangeTheSubject::Error, /was found, but could not be parsed/)
+    end
+  end
 end

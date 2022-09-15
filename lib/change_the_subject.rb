@@ -1,9 +1,12 @@
 # frozen_string_literal: true
 
 require "yaml"
+require "pry-byebug"
 
 # The creation and management of metadata are not neutral activities.
 class ChangeTheSubject
+  class Error < StandardError; end
+
   def self.fix(subject_terms:, separator: nil)
     new(separator: separator).fix(subject_terms: subject_terms)
   end
@@ -59,17 +62,10 @@ class ChangeTheSubject
   end
 
   def config_yaml
-    begin
-      change_the_subject_erb = ERB.new(File.read(change_the_subject_config_file)).result(binding)
-    rescue StandardError, SyntaxError => e
-      raise("#{change_the_subject_config_file} was found, but could not be parsed with ERB. \n#{e.inspect}")
-    end
-
-    begin
-      YAML.safe_load(change_the_subject_erb, aliases: true)
-    rescue StandardError => e
-      raise("#{change_the_subject_config_file} was found, but could not be parsed.\n#{e.inspect}")
-    end
+    change_the_subject_erb = ERB.new(File.read(change_the_subject_config_file)).result
+    YAML.safe_load(change_the_subject_erb, aliases: true)
+  rescue StandardError, SyntaxError => e
+    raise Error, "#{change_the_subject_config_file} was found, but could not be parsed. \n#{e.inspect}"
   end
 
   def change_the_subject_config_file
