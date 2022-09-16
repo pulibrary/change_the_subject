@@ -1,7 +1,6 @@
 # frozen_string_literal: true
 
 require "yaml"
-require "pry-byebug"
 
 # The creation and management of metadata are not neutral activities.
 class ChangeTheSubject
