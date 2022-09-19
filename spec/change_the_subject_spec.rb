@@ -92,30 +92,24 @@ RSpec.describe ChangeTheSubject do
     end
   end
 
-  context "Indigenous studies terms" do
+  context "with a subject term with a default separator" do
     let(:subject_terms) { ["Indians of North America—Connecticut"] }
     let(:fixed_subject_terms) { ["Indigenous peoples of North America—Connecticut"] }
 
-    it "suggests a replacement" do
+    it "uses correct separators" do
       expect(described_class.fix(subject_terms: subject_terms)).to eq fixed_subject_terms
     end
   end
 
-  context "with the default separator" do
-    let(:subject_terms) { ["Indians of North America—Connecticut"] }
-    let(:fixed_subject_terms) { ["Indigenous peoples of North America—Connecticut"] }
-
-    it "uses correct separator" do
-      expect(described_class.fix(subject_terms: subject_terms)).to eq fixed_subject_terms
+  context "with alternate separators" do
+    let(:subject_terms) do
+      ["Indians of North America || Connecticut",
+       "Indians of North America — New York"]
     end
-  end
+    let(:fixed_subject_terms) { ["Indigenous peoples of North America || Connecticut", "Indigenous peoples of North America — New York"] }
 
-  context "with an alternate separator" do
-    let(:subject_terms) { ["Indians of North America || Connecticut"] }
-    let(:fixed_subject_terms) { ["Indigenous peoples of North America || Connecticut"] }
-
-    it "uses correct separator" do
-      expect(described_class.fix(subject_terms: subject_terms, separator: " || ")).to eq fixed_subject_terms
+    it "uses correct separators" do
+      expect(described_class.fix(subject_terms: subject_terms, separators: [" || ", " — "])).to eq fixed_subject_terms
     end
   end
 
