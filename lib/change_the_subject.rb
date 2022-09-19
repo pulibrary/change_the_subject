@@ -6,18 +6,18 @@ require "yaml"
 class ChangeTheSubject
   class Error < StandardError; end
 
-  def self.fix(subject_terms:, separator: nil)
-    new(separator: separator).fix(subject_terms: subject_terms)
+  def self.fix(subject_terms:, separators: nil)
+    new(separators: separators).fix(subject_terms: subject_terms)
   end
 
-  def self.check_for_replacement(term:, separator: nil)
-    new(separator: separator).check_for_replacement(term: term)
+  def self.check_for_replacement(term:, separators: nil)
+    new(separators: separators).check_for_replacement(term: term)
   end
 
-  attr_reader :separator
+  attr_reader :separators
 
-  def initialize(separator: nil)
-    @separator = separator || "—"
+  def initialize(separators: nil)
+    @separators = separators || ["—"]
   end
 
   def terms_mapping
@@ -44,14 +44,18 @@ class ChangeTheSubject
   # @param [String] term
   # @return [String]
   def check_for_replacement(term:)
-    subterms = term.split(separator)
-    subfield_a = subterms.first
-    replacement = terms_mapping[subfield_a]
-    return term unless replacement
+    separators.each do |separator|
+      subterms = term.split(separator)
+      subfield_a = subterms.first
+      replacement = terms_mapping[subfield_a]
+      next unless replacement
 
-    subterms.delete(subfield_a)
-    subterms.prepend(replacement["replacement"])
-    subterms.join(separator)
+      subterms.delete(subfield_a)
+      subterms.prepend(replacement["replacement"])
+      return subterms.join(separator)
+    end
+
+    term
   end
 
   private
