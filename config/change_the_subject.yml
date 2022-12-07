@@ -76,3 +76,6 @@
 "Indians of the West Indies":
   replacement: "Indigenous peoples of the West Indies"
   rationale: "This term is used by TRLN; according to our research, this terminology is preferred and widely regarded as a more inclusive term. It is important to include the geographic region in the subject term when possible, as there are Indigenous peoples throughout the world.  When possible, it is respectful to also include the name of the community(ies) or nation(s) of the people in the record, for example \"Chumash,\" \"Tonkawa,\" \"Rapa Nui,\" \"Huetar.\""
+"Gender identity disorders":
+  replacement: "Gender dysphoria"
+  rationale: '"Gender identity disorder" was removed from the DSM -- the primary diagnostic manual used by psychiatric and psychological professionals in the U.S. -- nearly a decade ago, and replaced with "Gender dysphoria."'
