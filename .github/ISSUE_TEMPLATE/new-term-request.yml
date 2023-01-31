@@ -1,0 +1,29 @@
+name: New term request
+description: Request a new term to be masked from the public catalog
+title: "[New term request]: "
+labels: ["new term request"]
+body:
+  - type: input
+    attributes:
+      label: Original term
+      description: The term that you want to be masked
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Replacement term
+      description: The term that you want to be displayed instead of the original term
+    validations:
+      required: true
+  - type: textarea
+    attributes:
+      label: Brief rationale
+      description: This is the text that will be placed in [config/change_the_subject.yml](../config/change_the_subject.yml)
+    validations:
+      required: true
+  - type: input
+    attributes:
+      label: Link to decision document
+      description: Optionally, link to longer document describing the decision
+    validations:
+      required: false
