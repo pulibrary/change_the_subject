@@ -18,7 +18,7 @@ body:
   - type: textarea
     attributes:
       label: Brief rationale
-      description: This is the text that will be placed in [config/change_the_subject.yml](../config/change_the_subject.yml)
+      description: This is the text that will be placed in [config/change_the_subject.yml](https://github.com/pulibrary/change_the_subject/blob/main/config/change_the_subject.yml)
     validations:
       required: true
   - type: input
