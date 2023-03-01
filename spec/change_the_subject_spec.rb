@@ -31,7 +31,7 @@ RSpec.describe ChangeTheSubject do
       expect(described_class.check_for_replacement(term: "Women slaves")).to eq "Enslaved women"
       expect(described_class.check_for_replacement(term: "Indians of Central America")).to eq("Indigenous peoples of Central America")
       expect(described_class.check_for_replacement(term: "Indians of North America")).to eq("Indigenous peoples of North America")
-      expect(described_class.check_for_replacement(term: "Gender identity disorders")).to eq("Gender dysphoria")
+      expect(described_class.check_for_replacement(term: "Gender identity disorders in adolescence")).to eq("Gender dysphoria in adolescence")
     end
   end
 
