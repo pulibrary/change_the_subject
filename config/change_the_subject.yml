@@ -48,10 +48,10 @@
   rationale: "The term Noncitizen is the term LoC proposed as replacements for aliens and other uses of the word alien in LCSH."
 "Child slaves":
   replacement: "Enslaved children"
-  rationale: "In addition to its usage by TRLN, this term falls in line with recommendations included in the community-sourced document P. Gabrielle Foreman, et al. “Writing about Slavery/Teaching About Slavery: This Might Help” and Archives for Black Lives in Philadelphia Anti-Racist Description Resources."
+  rationale: "In addition to its usage by TRLN, this term falls in line with recommendations included in the community-sourced document P. Gabrielle Foreman, et al. \"Writing about Slavery/Teaching About Slavery: This Might Help\" and Archives for Black Lives in Philadelphia Anti-Racist Description Resources."
 "Indian slaves":
   replacement: "Enslaved indigenous peoples"
-  rationale: "In addition to its usage by TRLN, this term falls in line with recommendations included in the community-sourced document P. Gabrielle Foreman, et al. “Writing about Slavery/Teaching About Slavery: This Might Help.” Capitalization of \"Indigenous\" appears to be preferred by those from Indigenous communities, for example see https://www.lib.sfu.ca/about/branches-depts/slc/writing/inclusive-antiracist-writing/bipoc and https://www.ictinc.ca/blog/indigenous-peoples-terminology-guidelines-for-usage.  As this is a broad term, when possible, one should include the name of the community(ies) or nation(s) of the people in the record. "
+  rationale: "In addition to its usage by TRLN, this term falls in line with recommendations included in the community-sourced document P. Gabrielle Foreman, et al. \"Writing about Slavery/Teaching About Slavery: This Might Help.\" Capitalization of \"Indigenous\" appears to be preferred by those from Indigenous communities, for example see https://www.lib.sfu.ca/about/branches-depts/slc/writing/inclusive-antiracist-writing/bipoc and https://www.ictinc.ca/blog/indigenous-peoples-terminology-guidelines-for-usage.  As this is a broad term, when possible, one should include the name of the community(ies) or nation(s) of the people in the record. "
 "Older slaves":
   replacement: "Enslaved older people"
   rationale: "The use of \"enslaved\" falls in line with recommendations included in the community-sourced document P. Gabrielle Foreman, et al. \"Writing about Slavery/Teaching About Slavery: This Might Help\" and Archives for Black Lives in Philadelphia Anti-Racist Description Resources. \"Older people\" is the current LC preferred term: https://id.loc.gov/search/?q=memberOf:http://id.loc.gov/authorities/demographicTerms/collection_LCDGT_Age. "
@@ -61,6 +61,12 @@
 "Women slaves":
   replacement: "Enslaved women"
   rationale: "In addition to its usage by TRLN, this term falls in line with recommendations included in the community-sourced document P. Gabrielle Foreman, et al. \"Writing about Slavery/Teaching About Slavery: This Might Help\" and Archives for Black Lives in Philadelphia Anti-Racist Description Resources."
+"East Indians":
+  replacement: "Indians (India)"
+  rationale: "\"East Indians\" is anachronistic and confusing to researchers. \"East\" is not used with \"Indians\" by the people who live in India, people who once lived in India, or even by the former colonizers of India at this point in time."
+"Indians":
+  replacement: "Indigenous peoples of the Western Hemisphere"
+  rationale: "Using the scope note from the LCSH term, rather than the term \"Indians,\" is more accurate and less offensive for so many people under this large geographical umbrella."
 "Indians of Central America":
   replacement: "Indigenous peoples of Central America"
   rationale: "This term is used by TRLN; according to our research, this terminology is preferred and widely regarded as a more inclusive term. It is important to include the geographic region in the subject term when possible, as there are Indigenous peoples throughout the world.  When possible, it is respectful to also include the name of the community(ies) or nation(s) of the people in the record, for example \"Chumash,\" \"Tonkawa,\" \"Rapa Nui,\" \"Huetar.\""

@@ -29,7 +29,8 @@ RSpec.describe ChangeTheSubject do
       expect(described_class.check_for_replacement(term: "Older slaves")).to eq "Enslaved older people"
       expect(described_class.check_for_replacement(term: "Slaves")).to eq "Enslaved persons"
       expect(described_class.check_for_replacement(term: "Women slaves")).to eq "Enslaved women"
-      expect(described_class.check_for_replacement(term: "Indians of Central America")).to eq("Indigenous peoples of Central America")
+      expect(described_class.check_for_replacement(term: "East Indians")).to eq("Indians (India)")
+      expect(described_class.check_for_replacement(term: "Indians")).to eq("Indigenous peoples of the Western Hemisphere")
       expect(described_class.check_for_replacement(term: "Indians of North America")).to eq("Indigenous peoples of North America")
       expect(described_class.check_for_replacement(term: "Gender identity disorders in adolescence")).to eq("Gender dysphoria in adolescence")
     end
