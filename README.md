@@ -1,8 +1,8 @@
 # ChangeTheSubject
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/change_the_subject`. To experiment with that code, run `bin/console` for an interactive prompt.
+This gem is currently used to mask outdated Library of Congress Subject Headings in two different public access catalogs - [Princeton University Library Catalog](https://catalog.princeton.edu/) and [Princeton University Library Finding Aids](https://findingaids.princeton.edu/).
 
-TODO: Delete this and the text above, and describe your gem
+The code for this gem started in the [bibdata codebase](https://github.com/pulibrary/bibdata), the application that prepares metadata for use by the Catalog, and you can [see the gem's earlier history there](https://github.com/pulibrary/bibdata/commits/590d2437126150d66e40393724f9e11ba95c3328/marc_to_solr/lib/change_the_subject.rb).
 
 ## Installation
 
@@ -21,8 +21,15 @@ Or install it yourself as:
     $ gem install change_the_subject
 
 ## Usage
+The main api of the gem is the `.fix` method, which takes an array of subject terms, compares them to the configuration (the default is in `config/change_the_subject.yml`), and replaces the configured terms. You can see how Bibdata uses the gem in its [traject_config.rb](https://github.com/pulibrary/bibdata/blob/main/marc_to_solr/lib/traject_config.rb).
 
-TODO: Write usage instructions here
+```ruby
+original_subjects = ["Something problematic", "Something not problematic"]
+subjects = ChangeTheSubject.fix(subject_terms: original_subjects)
+# outputs ["Something not problematic from config", "Something not problematic"]
+```
+
+The `.fix` method also takes an optional `separators` argument, which you can [see in use in Pulfalight's implementation for eads](https://github.com/pulibrary/pulfalight/blob/main/lib/pulfalight/traject/ead2_config.rb).
 
 ## Development
 
