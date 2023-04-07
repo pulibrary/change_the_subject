@@ -21,7 +21,7 @@ Or install it yourself as:
     $ gem install change_the_subject
 
 ## Usage
-The main api of the gem is the `.fix` method, which takes an array of subject terms, compares them to the configuration (the default is in `config/change_the_subject.yml`), and replaces the configured terms. You can see how Bibdata uses the gem in its [traject_config.rb](https://github.com/pulibrary/bibdata/blob/main/marc_to_solr/lib/traject_config.rb).
+The main api of the gem is the `ChangeTheSubject.fix` method, which takes an array of subject terms, compares them to the configuration (the default is in `config/change_the_subject.yml`), and replaces the configured terms. You can see how Bibdata uses the gem in its [traject_config.rb](https://github.com/pulibrary/bibdata/blob/main/marc_to_solr/lib/traject_config.rb).
 
 ```ruby
 original_subjects = ["Something problematic", "Something not problematic"]
@@ -29,7 +29,7 @@ subjects = ChangeTheSubject.fix(subject_terms: original_subjects)
 # outputs ["Something not problematic from config", "Something not problematic"]
 ```
 
-The `.fix` method also takes an optional `separators` argument, which you can [see in use in Pulfalight's implementation for eads](https://github.com/pulibrary/pulfalight/blob/main/lib/pulfalight/traject/ead2_config.rb).
+The `ChangeTheSubject.fix` method also takes an optional `separators` argument, which you can [see in use in Pulfalight's implementation for eads](https://github.com/pulibrary/pulfalight/blob/main/lib/pulfalight/traject/ead2_config.rb).
 
 ## Development
 
