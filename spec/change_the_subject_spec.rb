@@ -25,7 +25,7 @@ RSpec.describe ChangeTheSubject do
       expect(described_class.check_for_replacement(term: "Aliens (Greek law)")).to eq "Noncitizens (Greek law)"
       expect(described_class.check_for_replacement(term: "Aliens (Roman law)")).to eq "Noncitizens (Roman law)"
       expect(described_class.check_for_replacement(term: "Child slaves")).to eq "Enslaved children"
-      expect(described_class.check_for_replacement(term: "Indian slaves")).to eq "Enslaved indigenous peoples"
+      expect(described_class.check_for_replacement(term: "Indian slaves")).to eq "Enslaved Indigenous peoples"
       expect(described_class.check_for_replacement(term: "Older slaves")).to eq "Enslaved older people"
       expect(described_class.check_for_replacement(term: "Slaves")).to eq "Enslaved persons"
       expect(described_class.check_for_replacement(term: "Women slaves")).to eq "Enslaved women"
