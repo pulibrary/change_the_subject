@@ -46,19 +46,37 @@ class ChangeTheSubject
   def check_for_replacement(term:)
     separators.each do |separator|
       subterms = term.split(separator)
-      subfield_a = subterms.first
-      replacement = terms_mapping[subfield_a]
+      replacement = replacement_config_for_subterms(subterms)
       next unless replacement
 
-      subterms.delete(subfield_a)
-      subterms.prepend(replacement["replacement"])
-      return subterms.join(separator)
+      new_terms = replacement_terms(replacement)
+      return subterms.drop(new_terms.count)
+                     .prepend(new_terms)
+                     .join(separator)
     end
 
     term
   end
 
   private
+
+  def replacement_config_for_subterms(subterms)
+    matching_key = terms_mapping.keys.find do |term_to_replace|
+      term_matches_subterms?(term_to_replace, subterms)
+    end
+    return terms_mapping[matching_key] if matching_key
+  end
+
+  def term_matches_subterms?(term, subterms)
+    term_as_array = Array(term)
+    term_as_array.count.times.all? do |index|
+      term_as_array[index] == subterms[index]
+    end
+  end
+
+  def replacement_terms(configured_term)
+    Array(configured_term["replacement"])
+  end
 
   def config
     @config ||= config_yaml
