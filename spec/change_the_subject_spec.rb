@@ -71,6 +71,33 @@ RSpec.describe ChangeTheSubject do
     end
   end
 
+  context "when the original term spans multiple subfields" do
+    let(:subject_terms) { ["Japanese Americans—Evacuation and relocation, 1942-1945", "Music"] }
+    let(:fixed_subject_terms) { ["Japanese Americans—Forced removal and internment, 1942-1945", "Music"] }
+
+    it "changes all of the configured subfields" do
+      expect(described_class.fix(subject_terms: subject_terms)).to eq fixed_subject_terms
+    end
+
+    context "when the subject term has further subdivisions after the configured term" do
+      let(:subject_terms) { ["Japanese Americans—Evacuation and relocation, 1942-1945—Comic books, strips, etc."] }
+      let(:fixed_subject_terms) { ["Japanese Americans—Forced removal and internment, 1942-1945—Comic books, strips, etc."] }
+
+      it "changes only the first, configured subfields" do
+        expect(described_class.fix(subject_terms: subject_terms)).to eq fixed_subject_terms
+      end
+    end
+
+    context "when the subject term is not at the beginning of the string" do
+      let(:subject_terms) { ["Some initial subject heading—Japanese Americans—Evacuation and relocation, 1942-1945"] }
+      let(:fixed_subject_terms) { ["Some initial subject heading—Japanese Americans—Evacuation and relocation, 1942-1945"] }
+
+      it "makes no attempt to change the subject" do
+        expect(described_class.fix(subject_terms: subject_terms)).to eq fixed_subject_terms
+      end
+    end
+  end
+
   context "subject terms with both the original and mapped term" do
     let(:subject_terms) { ["Illegal aliens", "Undocumented immigrants"] }
     let(:fixed_subject_terms) { ["Undocumented immigrants"] }

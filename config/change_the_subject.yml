@@ -94,3 +94,7 @@
 "Gays":
   replacement: "Gay people"
   rationale: "This subject heading has been updated by the Library of Congress, but some partner records have not yet been updated to reflect this."
+# The following term will match if the first two subfields in the field are "Japanese Americans" and "Evacuation and relocation, 1942-1945"
+["Japanese Americans", "Evacuation and relocation, 1942-1945"]:
+  replacement: ["Japanese Americans", "Forced removal and internment, 1942-1945"]
+  rationale: "This subject heading has been updated by the Library of Congress, but some partner records have not yet been updated to reflect this."
