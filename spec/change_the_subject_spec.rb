@@ -33,6 +33,10 @@ RSpec.describe ChangeTheSubject do
       expect(described_class.check_for_replacement(term: "Indians")).to eq("Indigenous peoples of the Western Hemisphere")
       expect(described_class.check_for_replacement(term: "Indians of North America")).to eq("Indigenous peoples of North America")
       expect(described_class.check_for_replacement(term: "Gender identity disorders in adolescence")).to eq("Gender dysphoria in adolescence")
+      expect(described_class.check_for_replacement(term: "Japanese Americans—Evacuation and relocation, 1942-1945")).to eq("Japanese Americans—Forced removal and internment, 1942-1945")
+      expect(described_class.check_for_replacement(term: "Aleuts—Evacuation and relocation, 1942-1945")).to eq("Aleuts—Forced removal and internment, 1942-1945")
+      expect(described_class.check_for_replacement(term: "German Americans—Evacuation and relocation, 1942-1945")).to eq("German Americans—Forced removal and internment, 1942-1945")
+      expect(described_class.check_for_replacement(term: "Italian Americans—Evacuation and relocation, 1942-1945")).to eq("Italian Americans—Forced removal and internment, 1942-1945")
     end
   end
 
