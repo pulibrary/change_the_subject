@@ -37,6 +37,7 @@ RSpec.describe ChangeTheSubject do
       expect(described_class.check_for_replacement(term: "Aleuts—Evacuation and relocation, 1942-1945")).to eq("Aleuts—Forced removal and internment, 1942-1945")
       expect(described_class.check_for_replacement(term: "German Americans—Evacuation and relocation, 1942-1945")).to eq("German Americans—Forced removal and internment, 1942-1945")
       expect(described_class.check_for_replacement(term: "Italian Americans—Evacuation and relocation, 1942-1945")).to eq("Italian Americans—Forced removal and internment, 1942-1945")
+      expect(described_class.check_for_replacement(term: "Convict labor")).to eq("Prison labor")
     end
   end
 
