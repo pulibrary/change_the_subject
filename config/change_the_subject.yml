@@ -107,3 +107,6 @@
 ["Italian Americans", "Evacuation and relocation, 1942-1945"]:
   replacement: ["Italian Americans", "Forced removal and internment, 1942-1945"]
   rationale: "This subject heading has been updated by the Library of Congress, but some partner records have not yet been updated to reflect this."
+"Convict labor":
+  replacement: "Prison labor"
+  rationale: "Prison labor is currently listed in LCSH as a variant of the authorized heading Convict labor. However, Convict labor appears to have become less commonly used and prison labor to have a broader historical scope. This title change was recommended by the Prison Teaching Initiative at Princeton."
