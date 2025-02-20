@@ -1,115 +1,113 @@
-"Illegal aliens":
-  replacement: "Undocumented immigrants"
-  rationale: "The term immigrant or undocumented/unauthorized immigrants are the terms LoC proposed as replacements for illegal aliens and other uses of the world alien in LCSH."
-"Women illegal aliens":
-  replacement: "Women undocumented immigrants"
-  rationale: "The term immigrant or undocumented/unauthorized immigrants are the terms LoC proposed as replacements for illegal aliens and other uses of the world alien in LCSH."
-"Illegal aliens in literature":
-  replacement: "Undocumented immigrants in literature"
-  rationale: "The term immigrant or undocumented/unauthorized immigrants are the terms LoC proposed as replacements for illegal aliens and other uses of the world alien in LCSH."
-"Children of illegal aliens":
-  replacement: "Children of undocumented immigrants"
-  rationale: "The term immigrant or undocumented/unauthorized immigrants are the terms LoC proposed as replacements for illegal aliens and other uses of the world alien in LCSH."
-"Illegal alien children":
-  replacement: "Undocumented immigrant children"
-  rationale: "The term immigrant or undocumented/unauthorized immigrants are the terms LoC proposed as replacements for illegal aliens and other uses of the world alien in LCSH."
-"Illegal immigration":
-  replacement: "Undocumented immigrants"
-  rationale: "The term immigrant or undocumented/unauthorized immigrants are the terms LoC proposed as replacements for illegal aliens and other uses of the world alien in LCSH."
-"Illegal immigration in literature":
-  replacement: "Undocumented immigrants in literature"
-  rationale: "The term immigrant or undocumented/unauthorized immigrants are the terms LoC proposed as replacements for illegal aliens and other uses of the world alien in LCSH."
-"Alien criminals":
-  replacement: "Noncitizen criminals"
-  rationale: "The term Noncitizen is the term LoC proposed as replacements for aliens and other uses of the word alien in LCSH."
-"Aliens":
-  replacement: "Noncitizens"
-  rationale: "The term Noncitizen is the term LoC proposed as replacements for aliens and other uses of the word alien in LCSH."
-"Aliens in art":
-  replacement: "Noncitizens in art"
-  rationale: "The term Noncitizen is the term LoC proposed as replacements for aliens and other uses of the word alien in LCSH."
-"Aliens in literature":
-  replacement: "Noncitizens in literature"
-  rationale: "The term Noncitizen is the term LoC proposed as replacements for aliens and other uses of the word alien in LCSH."
-"Aliens in mass media":
-  replacement: "Noncitizens in mass media"
-  rationale: "The term Noncitizen is the term LoC proposed as replacements for aliens and other uses of the word alien in LCSH."
-"Church work with aliens":
-  replacement: "Church work with noncitizens"
-  rationale: "The term Noncitizen is the term LoC proposed as replacements for aliens and other uses of the word alien in LCSH."
-"Officials and employees, Alien":
-  replacement: "Officials and employees, Noncitizen"
-  rationale: "The term Noncitizen is the term LoC proposed as replacements for aliens and other uses of the word alien in LCSH."
-"Aliens (Greek law)":
-  replacement: "Noncitizens (Greek law)"
-  rationale: "The term Noncitizen is the term LoC proposed as replacements for aliens and other uses of the word alien in LCSH."
-"Aliens (Roman law)":
-  replacement: "Noncitizens (Roman law)"
-  rationale: "The term Noncitizen is the term LoC proposed as replacements for aliens and other uses of the word alien in LCSH."
-"Child slaves":
-  replacement: "Enslaved children"
-  rationale: "In addition to its usage by TRLN, this term falls in line with recommendations included in the community-sourced document P. Gabrielle Foreman, et al. \"Writing about Slavery/Teaching About Slavery: This Might Help\" and Archives for Black Lives in Philadelphia Anti-Racist Description Resources."
-"Indian slaves":
-  replacement: "Enslaved Indigenous peoples"
-  rationale: "In addition to its usage by TRLN, this term falls in line with recommendations included in the community-sourced document P. Gabrielle Foreman, et al. \"Writing about Slavery/Teaching About Slavery: This Might Help.\" Capitalization of \"Indigenous\" appears to be preferred by those from Indigenous communities, for example see https://www.lib.sfu.ca/about/branches-depts/slc/writing/inclusive-antiracist-writing/bipoc and https://www.ictinc.ca/blog/indigenous-peoples-terminology-guidelines-for-usage.  As this is a broad term, when possible, one should include the name of the community(ies) or nation(s) of the people in the record. "
-"Older slaves":
-  replacement: "Enslaved older people"
-  rationale: "The use of \"enslaved\" falls in line with recommendations included in the community-sourced document P. Gabrielle Foreman, et al. \"Writing about Slavery/Teaching About Slavery: This Might Help\" and Archives for Black Lives in Philadelphia Anti-Racist Description Resources. \"Older people\" is the current LC preferred term: https://id.loc.gov/search/?q=memberOf:http://id.loc.gov/authorities/demographicTerms/collection_LCDGT_Age. "
-"Slaves":
-  replacement: "Enslaved persons"
-  rationale: "In addition to its usage by TRLN, this term falls in line with recommendations included in the community-sourced document P. Gabrielle Foreman, et al. \"Writing about Slavery/Teaching About Slavery: This Might Help\" and Archives for Black Lives in Philadelphia Anti-Racist Description Resources."
-"Women slaves":
-  replacement: "Enslaved women"
-  rationale: "In addition to its usage by TRLN, this term falls in line with recommendations included in the community-sourced document P. Gabrielle Foreman, et al. \"Writing about Slavery/Teaching About Slavery: This Might Help\" and Archives for Black Lives in Philadelphia Anti-Racist Description Resources."
-"East Indians":
-  replacement: "Indians (India)"
-  rationale: "\"East Indians\" is anachronistic and confusing to researchers. \"East\" is not used with \"Indians\" by the people who live in India, people who once lived in India, or even by the former colonizers of India at this point in time."
-"Indians":
-  replacement: "Indigenous peoples of the Western Hemisphere"
-  rationale: "Using the scope note from the LCSH term, rather than the term \"Indians,\" is more accurate and less offensive for so many people under this large geographical umbrella."
-"Indians of Central America":
-  replacement: "Indigenous peoples of Central America"
-  rationale: "This term is used by TRLN; according to our research, this terminology is preferred and widely regarded as a more inclusive term. It is important to include the geographic region in the subject term when possible, as there are Indigenous peoples throughout the world.  When possible, it is respectful to also include the name of the community(ies) or nation(s) of the people in the record, for example \"Chumash,\" \"Tonkawa,\" \"Rapa Nui,\" \"Huetar.\""
-"Indians of Mexico":
-  replacement: "Indigenous peoples of Mexico"
-  rationale: "This term is used by TRLN; according to our research, this terminology is preferred and widely regarded as a more inclusive term. It is important to include the geographic region in the subject term when possible, as there are Indigenous peoples throughout the world.  When possible, it is respectful to also include the name of the community(ies) or nation(s) of the people in the record, for example \"Chumash,\" \"Tonkawa,\" \"Rapa Nui,\" \"Huetar.\""
-"Indians of North America":
-  replacement: "Indigenous peoples of North America"
-  rationale: "This term is used by TRLN; according to our research, this terminology is preferred and widely regarded as a more inclusive term. It is important to include the geographic region in the subject term when possible, as there are Indigenous peoples throughout the world.  When possible, it is respectful to also include the name of the community(ies) or nation(s) of the people in the record, for example \"Chumash,\" \"Tonkawa,\" \"Rapa Nui,\" \"Huetar.\""
-"Indians of South America":
-  replacement: "Indigenous peoples of South America"
-  rationale: "This term is used by TRLN; according to our research, this terminology is preferred and widely regarded as a more inclusive term. It is important to include the geographic region in the subject term when possible, as there are Indigenous peoples throughout the world.  When possible, it is respectful to also include the name of the community(ies) or nation(s) of the people in the record, for example \"Chumash,\" \"Tonkawa,\" \"Rapa Nui,\" \"Huetar.\""
-"Indians of the West Indies":
-  replacement: "Indigenous peoples of the West Indies"
-  rationale: "This term is used by TRLN; according to our research, this terminology is preferred and widely regarded as a more inclusive term. It is important to include the geographic region in the subject term when possible, as there are Indigenous peoples throughout the world.  When possible, it is respectful to also include the name of the community(ies) or nation(s) of the people in the record, for example \"Chumash,\" \"Tonkawa,\" \"Rapa Nui,\" \"Huetar.\""
-"Gender identity disorders":
-  replacement: "Gender dysphoria"
-  rationale: '"Gender identity disorder" was removed from the DSM -- the primary diagnostic manual used by psychiatric and psychological professionals in the U.S. -- nearly a decade ago, and replaced with "Gender dysphoria."'
-"Gender identity disorders in children":
-  replacement: "Gender dysphoria in children"
-  rationale: '"Gender identity disorder" was removed from the DSM -- the primary diagnostic manual used by psychiatric and psychological professionals in the U.S. -- nearly a decade ago, and replaced with "Gender dysphoria."'
-"Gender identity disorders in adolescence":
-  replacement: "Gender dysphoria in adolescence"
-  rationale: '"Gender identity disorder" was removed from the DSM -- the primary diagnostic manual used by psychiatric and psychological professionals in the U.S. -- nearly a decade ago, and replaced with "Gender dysphoria."'
-"Gays":
-  replacement: "Gay people"
-  rationale: "This subject heading has been updated by the Library of Congress, but some partner records have not yet been updated to reflect this."
-# The following term will match if the first two subfields in the field are "Japanese Americans" and "Evacuation and relocation, 1942-1945"
-["Japanese Americans", "Evacuation and relocation, 1942-1945"]:
-  replacement: ["Japanese Americans", "Forced removal and internment, 1942-1945"]
-  rationale: "This subject heading has been updated by the Library of Congress, but some partner records have not yet been updated to reflect this."
-["Aleuts", "Evacuation and relocation, 1942-1945"]:
-  replacement: ["Aleuts", "Forced removal and internment, 1942-1945"]
-  rationale: "This subject heading has been updated by the Library of Congress, but some partner records have not yet been updated to reflect this."
-["German Americans", "Evacuation and relocation, 1942-1945"]:
-  replacement: ["German Americans", "Forced removal and internment, 1942-1945"]
-  rationale: "This subject heading has been updated by the Library of Congress, but some partner records have not yet been updated to reflect this."
-["Italian Americans", "Evacuation and relocation, 1942-1945"]:
-  replacement: ["Italian Americans", "Forced removal and internment, 1942-1945"]
-  rationale: "This subject heading has been updated by the Library of Congress, but some partner records have not yet been updated to reflect this."
-"Convict labor":
-  replacement: "Prison labor"
-  rationale: "Prison labor is currently listed in LCSH as a variant of the authorized heading Convict labor. However, Convict labor appears to have become less commonly used and prison labor to have a broader historical scope. This title change was recommended by the Prison Teaching Initiative at Princeton."
-"McKinley, Mount (Alaska)":
-  replacement: "Denali, Mount (Alaska)"
-  rationale: 'Denali is one of many long-standing Native names for this mountain, the name in common usage in Alaska, and the name with the most literary warrant. The Alaska Legislature has consistently requested that this mountain be called "Denali" since 1975, which was reaffirmed again in 2025. On the other hand, the name Mount McKinley had only been in use since 1896, in honor of a man who never set foot in Alaska or had any connection to the mountain. LCSH changed the authorized heading to "Denali, Mount (Alaska)" in 2015, and there is no need to change it back to the less common, less accurate name.'
+main_term:
+  "Illegal aliens":
+    replacement: "Undocumented immigrants"
+    rationale: "The term immigrant or undocumented/unauthorized immigrants are the terms LoC proposed as replacements for illegal aliens and other uses of the world alien in LCSH."
+  "Women illegal aliens":
+    replacement: "Women undocumented immigrants"
+    rationale: "The term immigrant or undocumented/unauthorized immigrants are the terms LoC proposed as replacements for illegal aliens and other uses of the world alien in LCSH."
+  "Illegal aliens in literature":
+    replacement: "Undocumented immigrants in literature"
+    rationale: "The term immigrant or undocumented/unauthorized immigrants are the terms LoC proposed as replacements for illegal aliens and other uses of the world alien in LCSH."
+  "Children of illegal aliens":
+    replacement: "Children of undocumented immigrants"
+    rationale: "The term immigrant or undocumented/unauthorized immigrants are the terms LoC proposed as replacements for illegal aliens and other uses of the world alien in LCSH."
+  "Illegal alien children":
+    replacement: "Undocumented immigrant children"
+    rationale: "The term immigrant or undocumented/unauthorized immigrants are the terms LoC proposed as replacements for illegal aliens and other uses of the world alien in LCSH."
+  "Illegal immigration":
+    replacement: "Undocumented immigrants"
+    rationale: "The term immigrant or undocumented/unauthorized immigrants are the terms LoC proposed as replacements for illegal aliens and other uses of the world alien in LCSH."
+  "Illegal immigration in literature":
+    replacement: "Undocumented immigrants in literature"
+    rationale: "The term immigrant or undocumented/unauthorized immigrants are the terms LoC proposed as replacements for illegal aliens and other uses of the world alien in LCSH."
+  "Alien criminals":
+    replacement: "Noncitizen criminals"
+    rationale: "The term Noncitizen is the term LoC proposed as replacements for aliens and other uses of the word alien in LCSH."
+  "Aliens":
+    replacement: "Noncitizens"
+    rationale: "The term Noncitizen is the term LoC proposed as replacements for aliens and other uses of the word alien in LCSH."
+  "Aliens in art":
+    replacement: "Noncitizens in art"
+    rationale: "The term Noncitizen is the term LoC proposed as replacements for aliens and other uses of the word alien in LCSH."
+  "Aliens in literature":
+    replacement: "Noncitizens in literature"
+    rationale: "The term Noncitizen is the term LoC proposed as replacements for aliens and other uses of the word alien in LCSH."
+  "Aliens in mass media":
+    replacement: "Noncitizens in mass media"
+    rationale: "The term Noncitizen is the term LoC proposed as replacements for aliens and other uses of the word alien in LCSH."
+  "Church work with aliens":
+    replacement: "Church work with noncitizens"
+    rationale: "The term Noncitizen is the term LoC proposed as replacements for aliens and other uses of the word alien in LCSH."
+  "Officials and employees, Alien":
+    replacement: "Officials and employees, Noncitizen"
+    rationale: "The term Noncitizen is the term LoC proposed as replacements for aliens and other uses of the word alien in LCSH."
+  "Aliens (Greek law)":
+    replacement: "Noncitizens (Greek law)"
+    rationale: "The term Noncitizen is the term LoC proposed as replacements for aliens and other uses of the word alien in LCSH."
+  "Aliens (Roman law)":
+    replacement: "Noncitizens (Roman law)"
+    rationale: "The term Noncitizen is the term LoC proposed as replacements for aliens and other uses of the word alien in LCSH."
+  "Child slaves":
+    replacement: "Enslaved children"
+    rationale: "In addition to its usage by TRLN, this term falls in line with recommendations included in the community-sourced document P. Gabrielle Foreman, et al. \"Writing about Slavery/Teaching About Slavery: This Might Help\" and Archives for Black Lives in Philadelphia Anti-Racist Description Resources."
+  "Indian slaves":
+    replacement: "Enslaved Indigenous peoples"
+    rationale: "In addition to its usage by TRLN, this term falls in line with recommendations included in the community-sourced document P. Gabrielle Foreman, et al. \"Writing about Slavery/Teaching About Slavery: This Might Help.\" Capitalization of \"Indigenous\" appears to be preferred by those from Indigenous communities, for example see https://www.lib.sfu.ca/about/branches-depts/slc/writing/inclusive-antiracist-writing/bipoc and https://www.ictinc.ca/blog/indigenous-peoples-terminology-guidelines-for-usage.  As this is a broad term, when possible, one should include the name of the community(ies) or nation(s) of the people in the record. "
+  "Older slaves":
+    replacement: "Enslaved older people"
+    rationale: "The use of \"enslaved\" falls in line with recommendations included in the community-sourced document P. Gabrielle Foreman, et al. \"Writing about Slavery/Teaching About Slavery: This Might Help\" and Archives for Black Lives in Philadelphia Anti-Racist Description Resources. \"Older people\" is the current LC preferred term: https://id.loc.gov/search/?q=memberOf:http://id.loc.gov/authorities/demographicTerms/collection_LCDGT_Age. "
+  "Slaves":
+    replacement: "Enslaved persons"
+    rationale: "In addition to its usage by TRLN, this term falls in line with recommendations included in the community-sourced document P. Gabrielle Foreman, et al. \"Writing about Slavery/Teaching About Slavery: This Might Help\" and Archives for Black Lives in Philadelphia Anti-Racist Description Resources."
+  "Women slaves":
+    replacement: "Enslaved women"
+    rationale: "In addition to its usage by TRLN, this term falls in line with recommendations included in the community-sourced document P. Gabrielle Foreman, et al. \"Writing about Slavery/Teaching About Slavery: This Might Help\" and Archives for Black Lives in Philadelphia Anti-Racist Description Resources."
+  "East Indians":
+    replacement: "Indians (India)"
+    rationale: "\"East Indians\" is anachronistic and confusing to researchers. \"East\" is not used with \"Indians\" by the people who live in India, people who once lived in India, or even by the former colonizers of India at this point in time."
+  "Indians":
+    replacement: "Indigenous peoples of the Western Hemisphere"
+    rationale: "Using the scope note from the LCSH term, rather than the term \"Indians,\" is more accurate and less offensive for so many people under this large geographical umbrella."
+  "Indians of Central America":
+    replacement: "Indigenous peoples of Central America"
+    rationale: "This term is used by TRLN; according to our research, this terminology is preferred and widely regarded as a more inclusive term. It is important to include the geographic region in the subject term when possible, as there are Indigenous peoples throughout the world.  When possible, it is respectful to also include the name of the community(ies) or nation(s) of the people in the record, for example \"Chumash,\" \"Tonkawa,\" \"Rapa Nui,\" \"Huetar.\""
+  "Indians of Mexico":
+    replacement: "Indigenous peoples of Mexico"
+    rationale: "This term is used by TRLN; according to our research, this terminology is preferred and widely regarded as a more inclusive term. It is important to include the geographic region in the subject term when possible, as there are Indigenous peoples throughout the world.  When possible, it is respectful to also include the name of the community(ies) or nation(s) of the people in the record, for example \"Chumash,\" \"Tonkawa,\" \"Rapa Nui,\" \"Huetar.\""
+  "Indians of North America":
+    replacement: "Indigenous peoples of North America"
+    rationale: "This term is used by TRLN; according to our research, this terminology is preferred and widely regarded as a more inclusive term. It is important to include the geographic region in the subject term when possible, as there are Indigenous peoples throughout the world.  When possible, it is respectful to also include the name of the community(ies) or nation(s) of the people in the record, for example \"Chumash,\" \"Tonkawa,\" \"Rapa Nui,\" \"Huetar.\""
+  "Indians of South America":
+    replacement: "Indigenous peoples of South America"
+    rationale: "This term is used by TRLN; according to our research, this terminology is preferred and widely regarded as a more inclusive term. It is important to include the geographic region in the subject term when possible, as there are Indigenous peoples throughout the world.  When possible, it is respectful to also include the name of the community(ies) or nation(s) of the people in the record, for example \"Chumash,\" \"Tonkawa,\" \"Rapa Nui,\" \"Huetar.\""
+  "Indians of the West Indies":
+    replacement: "Indigenous peoples of the West Indies"
+    rationale: "This term is used by TRLN; according to our research, this terminology is preferred and widely regarded as a more inclusive term. It is important to include the geographic region in the subject term when possible, as there are Indigenous peoples throughout the world.  When possible, it is respectful to also include the name of the community(ies) or nation(s) of the people in the record, for example \"Chumash,\" \"Tonkawa,\" \"Rapa Nui,\" \"Huetar.\""
+  "Gender identity disorders":
+    replacement: "Gender dysphoria"
+    rationale: '"Gender identity disorder" was removed from the DSM -- the primary diagnostic manual used by psychiatric and psychological professionals in the U.S. -- nearly a decade ago, and replaced with "Gender dysphoria."'
+  "Gender identity disorders in children":
+    replacement: "Gender dysphoria in children"
+    rationale: '"Gender identity disorder" was removed from the DSM -- the primary diagnostic manual used by psychiatric and psychological professionals in the U.S. -- nearly a decade ago, and replaced with "Gender dysphoria."'
+  "Gender identity disorders in adolescence":
+    replacement: "Gender dysphoria in adolescence"
+    rationale: '"Gender identity disorder" was removed from the DSM -- the primary diagnostic manual used by psychiatric and psychological professionals in the U.S. -- nearly a decade ago, and replaced with "Gender dysphoria."'
+  "Gays":
+    replacement: "Gay people"
+    rationale: "This subject heading has been updated by the Library of Congress, but some partner records have not yet been updated to reflect this."
+  "Convict labor":
+    replacement: "Prison labor"
+    rationale: "Prison labor is currently listed in LCSH as a variant of the authorized heading Convict labor. However, Convict labor appears to have become less commonly used and prison labor to have a broader historical scope. This title change was recommended by the Prison Teaching Initiative at Princeton."
+  "McKinley, Mount (Alaska)":
+    replacement: "Denali, Mount (Alaska)"
+    rationale: 'Denali is one of many long-standing Native names for this mountain, the name in common usage in Alaska, and the name with the most literary warrant. The Alaska Legislature has consistently requested that this mountain be called "Denali" since 1975, which was reaffirmed again in 2025. On the other hand, the name Mount McKinley had only been in use since 1896, in honor of a man who never set foot in Alaska or had any connection to the mountain. LCSH changed the authorized heading to "Denali, Mount (Alaska)" in 2015, and there is no need to change it back to the less common, less accurate name.'
+  "America, Gulf of":
+    replacement: "Mexico, Gulf of"
+    rationale: 'The term "Mexico, Gulf of" reflects literary warrant as well as colloquial usage patterns, and the term "America, Gulf of" is politically contested.'
+subdivision:
+  "America, Gulf of":
+    replacement: "Mexico, Gulf of"
+    rationale: 'The term "Mexico, Gulf of" reflects literary warrant as well as colloquial usage patterns, and the term "America, Gulf of" is politically contested.'
+  "Evacuation and relocation, 1942-1945":
+    replacement: "Forced removal and internment, 1942-1945"
+    rationale: "This subdivision has been updated by the Library of Congress, but some partner records have not yet been updated to reflect this."

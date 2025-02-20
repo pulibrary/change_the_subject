@@ -33,11 +33,14 @@ RSpec.describe ChangeTheSubject do
       expect(described_class.check_for_replacement(term: "Indians")).to eq("Indigenous peoples of the Western Hemisphere")
       expect(described_class.check_for_replacement(term: "Indians of North America")).to eq("Indigenous peoples of North America")
       expect(described_class.check_for_replacement(term: "Gender identity disorders in adolescence")).to eq("Gender dysphoria in adolescence")
-      expect(described_class.check_for_replacement(term: "Japanese Americans—Evacuation and relocation, 1942-1945")).to eq("Japanese Americans—Forced removal and internment, 1942-1945")
-      expect(described_class.check_for_replacement(term: "Aleuts—Evacuation and relocation, 1942-1945")).to eq("Aleuts—Forced removal and internment, 1942-1945")
-      expect(described_class.check_for_replacement(term: "German Americans—Evacuation and relocation, 1942-1945")).to eq("German Americans—Forced removal and internment, 1942-1945")
-      expect(described_class.check_for_replacement(term: "Italian Americans—Evacuation and relocation, 1942-1945")).to eq("Italian Americans—Forced removal and internment, 1942-1945")
       expect(described_class.check_for_replacement(term: "Convict labor")).to eq("Prison labor")
+    end
+
+    it "suggests a replacement for subdivisions" do
+      expect(described_class.new.check_for_replacement_subdivision(term: "Japanese Americans—Evacuation and relocation, 1942-1945")).to eq("Japanese Americans—Forced removal and internment, 1942-1945")
+      expect(described_class.new.check_for_replacement_subdivision(term: "Aleuts—Evacuation and relocation, 1942-1945")).to eq("Aleuts—Forced removal and internment, 1942-1945")
+      expect(described_class.new.check_for_replacement_subdivision(term: "German Americans—Evacuation and relocation, 1942-1945")).to eq("German Americans—Forced removal and internment, 1942-1945")
+      expect(described_class.new.check_for_replacement_subdivision(term: "Italian Americans—Evacuation and relocation, 1942-1945")).to eq("Italian Americans—Forced removal and internment, 1942-1945")
     end
   end
 
@@ -93,12 +96,24 @@ RSpec.describe ChangeTheSubject do
       end
     end
 
-    context "when the subject term is not at the beginning of the string" do
-      let(:subject_terms) { ["Some initial subject heading—Japanese Americans—Evacuation and relocation, 1942-1945"] }
-      let(:fixed_subject_terms) { ["Some initial subject heading—Japanese Americans—Evacuation and relocation, 1942-1945"] }
+    context "when the subdivision term is not at the beginning of the string" do
+      let(:subject_terms) { ["Banks (Oceanography)—America, Gulf of"] }
+      let(:fixed_subject_terms) { ["Banks (Oceanography)—Mexico, Gulf of"] }
 
-      it "makes no attempt to change the subject" do
+      it "changes the subdivision term" do
         expect(described_class.fix(subject_terms: subject_terms)).to eq fixed_subject_terms
+      end
+    end
+  end
+
+  describe "#check_for_replacement_subdivision" do
+    it "returns the expected subdivision" do
+      expect(described_class.new.check_for_replacement_subdivision(term: "Banks (Oceanography)—America, Gulf of")).to eq("Banks (Oceanography)—Mexico, Gulf of")
+    end
+
+    context "with a single main term" do
+      it "returns the term unchanged" do
+        expect(described_class.new.check_for_replacement_subdivision(term: "Banks (Oceanography)")).to eq("Banks (Oceanography)")
       end
     end
   end
@@ -112,17 +127,47 @@ RSpec.describe ChangeTheSubject do
     end
   end
 
-  context "subject terms that have empty replacements" do
-    let(:subject_terms) { ["Test term", "Illegal aliens"] }
-    let(:fixed_subject_terms) { ["Undocumented immigrants"] }
+  context "with the test fixture config" do
     let(:fixture_config) { File.join("spec", "fixtures", "change_the_subject.yml") }
 
     before do
-      allow(File).to receive(:join).and_return(fixture_config)
+      allow(File).to receive(:join).and_call_original
+      allow(File).to receive(:join).with(anything, anything, "config", "change_the_subject.yml").and_return(fixture_config)
     end
 
-    it "suggests a replacement" do
-      expect(described_class.fix(subject_terms: subject_terms)).to eq fixed_subject_terms
+    it "does not replace the main term with a subdivision term" do
+      expect(described_class.fix(subject_terms: ["Only replace subdivision"])).to eq(["Only replace subdivision"])
+      expect(described_class.fix(subject_terms: ["Only replace main"])).to eq(["I have been replaced (main)"])
+      expect(described_class.fix(subject_terms: ["Only replace subdivision—Only replace main"])).to eq(["Only replace subdivision—Only replace main"])
+      expect(described_class.fix(subject_terms: ["Only replace main—Only replace subdivision"])).to eq(["I have been replaced (main)—I have been replaced (subdivision)"])
+    end
+
+    context "subject terms that have empty replacements" do
+      let(:subject_terms) { ["Test term", "Illegal aliens"] }
+      let(:fixed_subject_terms) { ["Undocumented immigrants"] }
+
+      it "suggests a replacement" do
+        expect(described_class.fix(subject_terms: subject_terms)).to eq fixed_subject_terms
+      end
+    end
+
+    context "with multiple subdivision terms for replacement" do
+      let(:subject_terms) do
+        [
+          "Banks (Oceanography)—America, Gulf of—Another subdivision for replacement",
+          "Bottlenose dolphin—America, Gulf of—Behavior"
+        ]
+      end
+      let(:fixed_subject_terms) do
+        [
+          "Banks (Oceanography)—Mexico, Gulf of—Replace me too",
+          "Bottlenose dolphin—Mexico, Gulf of—Behavior"
+        ]
+      end
+
+      it "replaces all subdivision terms" do
+        expect(described_class.fix(subject_terms: subject_terms)).to eq fixed_subject_terms
+      end
     end
   end
 
@@ -144,6 +189,25 @@ RSpec.describe ChangeTheSubject do
 
     it "uses correct separators" do
       expect(described_class.fix(subject_terms: subject_terms, separators: [" || ", " — "])).to eq fixed_subject_terms
+    end
+
+    context "with mixed subdivision replacements" do
+      let(:subject_terms) do
+        [
+          "Banks (Oceanography) || America, Gulf of",
+          "Bottlenose dolphin — America, Gulf of — Behavior"
+        ]
+      end
+      let(:fixed_subject_terms) do
+        [
+          "Banks (Oceanography) || Mexico, Gulf of",
+          "Bottlenose dolphin — Mexico, Gulf of — Behavior"
+        ]
+      end
+
+      it "uses correct separators" do
+        expect(described_class.fix(subject_terms: subject_terms, separators: [" || ", " — "])).to eq fixed_subject_terms
+      end
     end
   end
 
