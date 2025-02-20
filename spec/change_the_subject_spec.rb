@@ -33,11 +33,14 @@ RSpec.describe ChangeTheSubject do
       expect(described_class.check_for_replacement(term: "Indians")).to eq("Indigenous peoples of the Western Hemisphere")
       expect(described_class.check_for_replacement(term: "Indians of North America")).to eq("Indigenous peoples of North America")
       expect(described_class.check_for_replacement(term: "Gender identity disorders in adolescence")).to eq("Gender dysphoria in adolescence")
-      expect(described_class.check_for_replacement(term: "Japanese Americans—Evacuation and relocation, 1942-1945")).to eq("Japanese Americans—Forced removal and internment, 1942-1945")
-      expect(described_class.check_for_replacement(term: "Aleuts—Evacuation and relocation, 1942-1945")).to eq("Aleuts—Forced removal and internment, 1942-1945")
-      expect(described_class.check_for_replacement(term: "German Americans—Evacuation and relocation, 1942-1945")).to eq("German Americans—Forced removal and internment, 1942-1945")
-      expect(described_class.check_for_replacement(term: "Italian Americans—Evacuation and relocation, 1942-1945")).to eq("Italian Americans—Forced removal and internment, 1942-1945")
       expect(described_class.check_for_replacement(term: "Convict labor")).to eq("Prison labor")
+    end
+
+    it "suggests a replacement for subdivisions" do
+      expect(described_class.new.check_for_replacement_subdivision(term: "Japanese Americans—Evacuation and relocation, 1942-1945")).to eq("Japanese Americans—Forced removal and internment, 1942-1945")
+      expect(described_class.new.check_for_replacement_subdivision(term: "Aleuts—Evacuation and relocation, 1942-1945")).to eq("Aleuts—Forced removal and internment, 1942-1945")
+      expect(described_class.new.check_for_replacement_subdivision(term: "German Americans—Evacuation and relocation, 1942-1945")).to eq("German Americans—Forced removal and internment, 1942-1945")
+      expect(described_class.new.check_for_replacement_subdivision(term: "Italian Americans—Evacuation and relocation, 1942-1945")).to eq("Italian Americans—Forced removal and internment, 1942-1945")
     end
   end
 
@@ -89,15 +92,6 @@ RSpec.describe ChangeTheSubject do
       let(:fixed_subject_terms) { ["Japanese Americans—Forced removal and internment, 1942-1945—Comic books, strips, etc."] }
 
       it "changes only the first, configured subfields" do
-        expect(described_class.fix(subject_terms: subject_terms)).to eq fixed_subject_terms
-      end
-    end
-
-    context "when the subject term is not at the beginning of the string" do
-      let(:subject_terms) { ["Some initial subject heading—Japanese Americans—Evacuation and relocation, 1942-1945"] }
-      let(:fixed_subject_terms) { ["Some initial subject heading—Japanese Americans—Evacuation and relocation, 1942-1945"] }
-
-      it "makes no attempt to change the subject" do
         expect(described_class.fix(subject_terms: subject_terms)).to eq fixed_subject_terms
       end
     end
