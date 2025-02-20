@@ -64,7 +64,7 @@ class ChangeTheSubject
     matching_key = terms_mapping.keys.find do |term_to_replace|
       term_matches_subterms?(term_to_replace, subterms)
     end
-    return terms_mapping[matching_key] if matching_key
+    terms_mapping[matching_key] if matching_key
   end
 
   def term_matches_subterms?(term, subterms)
