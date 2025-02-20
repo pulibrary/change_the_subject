@@ -20,28 +20,19 @@ class ChangeTheSubject
     @separators = separators || ["—"]
   end
 
-  def terms_mapping
-    @terms_mapping ||= config
-  end
-
   def main_term_mapping
-    @main_term_mapping ||= terms_mapping["main_term"]
+    @main_term_mapping ||= config["main_term"]
   end
 
   def subdivision_term_mapping
-    @subdivision_term_mapping ||= terms_mapping["subdivision"]
+    @subdivision_term_mapping ||= config["subdivision"]
   end
 
   # Given an array of subject terms, replace the ones that need replacing
   # @param [<String>] subject_terms
   # @return [<String>]
   def fix(subject_terms:)
-    return [] if subject_terms.nil?
-
-    subject_terms = subject_terms.compact.reject(&:empty?)
-    return [] if subject_terms.empty? || subject_terms.nil?
-
-    subject_terms.map do |term|
+    subject_terms.compact.reject(&:empty?).map do |term|
       replacement = check_for_replacement(term: term)
       subdivision_replacement = check_for_replacement_subdivision(term: replacement)
 
@@ -68,26 +59,39 @@ class ChangeTheSubject
     term
   end
 
-  # rubocop:disable Metrics/MethodLength
   def check_for_replacement_subdivision(term:)
     separators.each do |separator|
       next unless term.include?(separator)
 
-      subterms = term.split(separator)
-      subterms.each.with_index do |sub_term, index|
-        next if index.zero?
-
-        term_config = subdivision_term_mapping[sub_term]
-        next unless term_config
-
-        subterms[index] = term_config["replacement"]
-      end
-
-      return subterms.join(separator)
+      return replace_subdivisions(term: term, separator: separator)
     end
     term
   end
-  # rubocop:enable Metrics/MethodLength
+
+  def replace_subdivisions(term:, separator:)
+    subterms = term.split(separator)
+    subterms.each.with_index do |sub_term, index|
+      next if index.zero?
+
+      term_config = subdivision_term_mapping[sub_term]
+      next unless term_config
+
+      subterms[index] = term_config["replacement"]
+    end
+
+    subterms.join(separator)
+  end
+
+  def self.config_yaml
+    change_the_subject_erb = ERB.new(File.read(change_the_subject_config_file)).result
+    YAML.safe_load(change_the_subject_erb, aliases: true)
+  rescue StandardError, SyntaxError => error
+    raise Error, "#{change_the_subject_config_file} was found, but could not be parsed. \n#{error.inspect}"
+  end
+
+  def self.change_the_subject_config_file
+    File.join(File.dirname(__FILE__), "../", "config", "change_the_subject.yml")
+  end
 
   private
 
@@ -110,17 +114,6 @@ class ChangeTheSubject
   end
 
   def config
-    @config ||= config_yaml
-  end
-
-  def config_yaml
-    change_the_subject_erb = ERB.new(File.read(change_the_subject_config_file)).result
-    YAML.safe_load(change_the_subject_erb, aliases: true)
-  rescue StandardError, SyntaxError => e
-    raise Error, "#{change_the_subject_config_file} was found, but could not be parsed. \n#{e.inspect}"
-  end
-
-  def change_the_subject_config_file
-    File.join(File.dirname(__FILE__), "../", "config", "change_the_subject.yml")
+    @config ||= ChangeTheSubject.config_yaml
   end
 end
