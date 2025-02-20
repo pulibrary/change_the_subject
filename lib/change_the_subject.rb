@@ -24,6 +24,14 @@ class ChangeTheSubject
     @terms_mapping ||= config
   end
 
+  def main_term_mapping
+    @main_term_mapping ||= terms_mapping["main_term"]
+  end
+
+  def subdivision_term_mapping
+    @subdivision_term_mapping ||= terms_mapping["subdivision"]
+  end
+
   # Given an array of subject terms, replace the ones that need replacing
   # @param [<String>] subject_terms
   # @return [<String>]
@@ -44,17 +52,36 @@ class ChangeTheSubject
   # @param [String] term
   # @return [String]
   def check_for_replacement(term:)
+    updated_main_term = check_for_main_field_replacement(term:)
+    check_for_subdivision_replacement(term: updated_main_term)
+  end
+
+  def check_for_main_field_replacement(term:)
     separators.each do |separator|
       subterms = term.split(separator)
       subfield_a = subterms.first
-      replacement = terms_mapping[subfield_a]
+      replacement = main_term_mapping[subfield_a]
       next unless replacement
 
-      subterms.delete(subfield_a)
-      subterms.prepend(replacement["replacement"])
+      subterms[0] = replacement["replacement"]
       return subterms.join(separator)
     end
 
+    term
+  end
+
+  def check_for_subdivision_replacement(term:)
+    separators.each do |separator|
+      subterms = term.split(separator)
+      subterms.each_with_index do |sub_term, index|
+        replacement = subdivision_term_mapping[sub_term]
+        next unless replacement
+
+        subterms[index] = replacement["replacement"]
+
+        return subterms.join(separator)
+      end
+    end
     term
   end
 

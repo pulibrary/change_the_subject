@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require "simplecov"
+require "byebug"
 
 SimpleCov.formatter = SimpleCov::Formatter::HTMLFormatter
 SimpleCov.start do

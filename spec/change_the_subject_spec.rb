@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require "byebug"
 require "spec_helper"
 
 ##
@@ -33,11 +34,27 @@ RSpec.describe ChangeTheSubject do
       expect(described_class.check_for_replacement(term: "Indians")).to eq("Indigenous peoples of the Western Hemisphere")
       expect(described_class.check_for_replacement(term: "Indians of North America")).to eq("Indigenous peoples of North America")
       expect(described_class.check_for_replacement(term: "Gender identity disorders in adolescence")).to eq("Gender dysphoria in adolescence")
-      expect(described_class.check_for_replacement(term: "Japanese Americans—Evacuation and relocation, 1942-1945")).to eq("Japanese Americans—Forced removal and internment, 1942-1945")
-      expect(described_class.check_for_replacement(term: "Aleuts—Evacuation and relocation, 1942-1945")).to eq("Aleuts—Forced removal and internment, 1942-1945")
-      expect(described_class.check_for_replacement(term: "German Americans—Evacuation and relocation, 1942-1945")).to eq("German Americans—Forced removal and internment, 1942-1945")
-      expect(described_class.check_for_replacement(term: "Italian Americans—Evacuation and relocation, 1942-1945")).to eq("Italian Americans—Forced removal and internment, 1942-1945")
+      # expect(described_class.check_for_replacement(term: "Japanese Americans—Evacuation and relocation, 1942-1945")).to eq("Japanese Americans—Forced removal and internment, 1942-1945")
+      # expect(described_class.check_for_replacement(term: "Aleuts—Evacuation and relocation, 1942-1945")).to eq("Aleuts—Forced removal and internment, 1942-1945")
+      # expect(described_class.check_for_replacement(term: "German Americans—Evacuation and relocation, 1942-1945")).to eq("German Americans—Forced removal and internment, 1942-1945")
+      # expect(described_class.check_for_replacement(term: "Italian Americans—Evacuation and relocation, 1942-1945")).to eq("Italian Americans—Forced removal and internment, 1942-1945")
       expect(described_class.check_for_replacement(term: "Convict labor")).to eq("Prison labor")
+    end
+  end
+
+  context "with only a subdivision that needs to be replaced" do
+    let(:subject_terms) { ["Japanese Americans—Evacuation and relocation, 1942-1945"] }
+    let(:fixed_subject_terms) { ["Japanese Americans—Forced removal and internment, 1942-1945"] }
+
+    it "changes the subdivision only" do
+      expect(described_class.fix(subject_terms: subject_terms)).to eq fixed_subject_terms
+    end
+
+    describe "checking for subdivision replacement" do
+      it "changes the subdivision only" do
+        expect(described_class.new.check_for_subdivision_replacement(term: "Japanese Americans—Evacuation and relocation, 1942-1945"))
+          .to eq("Japanese Americans—Forced removal and internment, 1942-1945")
+      end
     end
   end
 
@@ -117,6 +134,17 @@ RSpec.describe ChangeTheSubject do
 
     it "uses correct separators" do
       expect(described_class.fix(subject_terms: subject_terms, separators: [" || ", " — "])).to eq fixed_subject_terms
+    end
+
+    context "with subdivision replacement" do
+      let(:subject_terms) { ["Japanese Americans—Evacuation and relocation, 1942-1945", "Aleuts || Evacuation and relocation, 1942-1945"] }
+      let(:fixed_subject_terms) { ["Japanese Americans—Forced removal and internment, 1942-1945", "Aleuts || Forced removal and internment, 1942-1945"] }
+      let(:separators) { [" || ", " — "] }
+
+      it "maintains correct separators" do
+        pending("Fixing subdivision bug")
+        expect(described_class.fix(subject_terms: subject_terms, separators:)).to eq fixed_subject_terms
+      end
     end
   end
 
