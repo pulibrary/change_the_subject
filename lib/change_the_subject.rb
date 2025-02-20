@@ -24,6 +24,14 @@ class ChangeTheSubject
     @terms_mapping ||= config
   end
 
+  def main_term_mapping
+    @main_term_mapping ||= terms_mapping["main_term"]
+  end
+
+  def subdivision_term_mapping
+    @subdivision_term_mapping ||= terms_mapping["subdivision"]
+  end
+
   # Given an array of subject terms, replace the ones that need replacing
   # @param [<String>] subject_terms
   # @return [<String>]
@@ -35,7 +43,9 @@ class ChangeTheSubject
 
     subject_terms.map do |term|
       replacement = check_for_replacement(term: term)
-      replacement unless replacement.empty?
+      subdivision_replacement = check_for_replacement_subdivision(term: replacement)
+
+      subdivision_replacement unless subdivision_replacement.empty?
     end.compact.uniq
   end
 
@@ -46,7 +56,7 @@ class ChangeTheSubject
   def check_for_replacement(term:)
     separators.each do |separator|
       subterms = term.split(separator)
-      replacement = replacement_config_for_subterms(subterms)
+      replacement = replacement_config_for_main_terms(subterms)
       next unless replacement
 
       new_terms = replacement_terms(replacement)
@@ -58,13 +68,34 @@ class ChangeTheSubject
     term
   end
 
+  # rubocop:disable Metrics/MethodLength
+  def check_for_replacement_subdivision(term:)
+    separators.each do |separator|
+      next unless term.include?(separator)
+
+      subterms = term.split(separator)
+      subterms.each.with_index do |sub_term, index|
+        next if index.zero?
+
+        term_config = subdivision_term_mapping[sub_term]
+        next unless term_config
+
+        subterms[index] = term_config["replacement"]
+      end
+
+      return subterms.join(separator)
+    end
+    term
+  end
+  # rubocop:enable Metrics/MethodLength
+
   private
 
-  def replacement_config_for_subterms(subterms)
-    matching_key = terms_mapping.keys.find do |term_to_replace|
+  def replacement_config_for_main_terms(subterms)
+    matching_key = main_term_mapping.keys.find do |term_to_replace|
       term_matches_subterms?(term_to_replace, subterms)
     end
-    terms_mapping[matching_key] if matching_key
+    main_term_mapping[matching_key] if matching_key
   end
 
   def term_matches_subterms?(term, subterms)
