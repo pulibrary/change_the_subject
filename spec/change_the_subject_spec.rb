@@ -44,6 +44,12 @@ RSpec.describe ChangeTheSubject do
     end
   end
 
+  context "with a nil term" do
+    it "returns an empty array" do
+      expect(described_class.fix(subject_terms: nil)).to eq []
+    end
+  end
+
   context "a term that has not been replaced" do
     let(:subject_term) { "Daffodils" }
 
