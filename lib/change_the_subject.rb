@@ -32,6 +32,8 @@ class ChangeTheSubject
   # @param [<String>] subject_terms
   # @return [<String>]
   def fix(subject_terms:)
+    return [] if subject_terms.nil?
+
     subject_terms.compact.reject(&:empty?).map do |term|
       replacement = check_for_replacement(term: term)
       subdivision_replacement = check_for_replacement_subdivision(term: replacement)
