@@ -75,7 +75,8 @@ class ChangeTheSubject
     subterms.each.with_index do |sub_term, index|
       next if index.zero?
 
-      term_config = subdivision_term_mapping[sub_term]
+      clean_subterm = sub_term.delete_suffix(".")
+      term_config = subdivision_term_mapping[clean_subterm]
       next unless term_config
 
       subterms[index] = term_config["replacement"]
@@ -107,7 +108,8 @@ class ChangeTheSubject
   def term_matches_subterms?(term, subterms)
     term_as_array = Array(term)
     term_as_array.count.times.all? do |index|
-      term_as_array[index] == subterms[index]
+      clean_subterm = subterms[index].delete_suffix(".")
+      term_as_array[index] == clean_subterm
     end
   end
 
