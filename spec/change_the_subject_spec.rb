@@ -103,10 +103,19 @@ RSpec.describe ChangeTheSubject do
     end
 
     context "when the subdivision term is not at the beginning of the string" do
-      let(:subject_terms) { ["Banks (Oceanography)—America, Gulf of"] }
+      let(:subject_terms) { ["Banks (Oceanography)—America, Gulf of."] }
       let(:fixed_subject_terms) { ["Banks (Oceanography)—Mexico, Gulf of"] }
 
       it "changes the subdivision term" do
+        expect(described_class.fix(subject_terms: subject_terms)).to eq fixed_subject_terms
+      end
+    end
+
+    context "when there is a period at the end of the term" do
+      let(:subject_terms) { ["America, Gulf of."] }
+      let(:fixed_subject_terms) { ["Mexico, Gulf of"] }
+
+      it "removes the period and updates the term" do
         expect(described_class.fix(subject_terms: subject_terms)).to eq fixed_subject_terms
       end
     end
@@ -174,6 +183,11 @@ RSpec.describe ChangeTheSubject do
       it "replaces all subdivision terms" do
         expect(described_class.fix(subject_terms: subject_terms)).to eq fixed_subject_terms
       end
+    end
+
+    it "does not remove periods for terms we are not replacing" do
+      subject_terms = ["Y.M.C.A."]
+      expect(described_class.fix(subject_terms: subject_terms)).to eq subject_terms
     end
   end
 
