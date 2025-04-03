@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
 
   spec.summary       = "Provides configuration and utilities for replacing archaic subject terms with preferred subject terms"
   spec.homepage      = "https://github.com/pulibrary/change_the_subject"
-  spec.required_ruby_version = Gem::Requirement.new(">= 2.3.0")
+  spec.required_ruby_version = Gem::Requirement.new(">= 2.7.0")
 
   spec.metadata["allowed_push_host"] = "https://rubygems.org"
 
