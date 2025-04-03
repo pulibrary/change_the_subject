@@ -1,7 +1,7 @@
 PATH
   remote: .
   specs:
-    change_the_subject (0.4.2)
+    change_the_subject (1.0.0)
       yaml
 
 GEM
