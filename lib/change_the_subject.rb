@@ -81,8 +81,7 @@ class ChangeTheSubject
 
       subterms[index] = term_config["replacement"]
     end
-
-    subterms.join(separator)
+    subterms.flatten.uniq.join(separator)
   end
 
   def self.config_yaml

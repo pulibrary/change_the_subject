@@ -25,15 +25,24 @@ main_term:
     rationale: "This term is used by TRLN; according to our research, this terminology is preferred and widely regarded as a more inclusive term. It is important to include the geographic region in the subject term when possible, as there are Indigenous peoples throughout the world.  When possible, it is respectful to also include the name of the community(ies) or nation(s) of the people in the record, for example \"Chumash,\" \"Tonkawa,\" \"Rapa Nui,\" \"Huetar.\""
   "Only replace main":
     replacement: "I have been replaced (main)"
-
+  "America, Gulf of":
+    replacement: ["Mexico, Gulf of", "America, Gulf of"]
+    rationale: 'to be determined'
+  "Mexico, Gulf of":
+    replacement: ["Mexico, Gulf of", "America, Gulf of"]
+    rationale: "to be determined"
   "Test term":
     replacement: ""
     rationale: "For testing purposes only"
 subdivision:
   "America, Gulf of":
-    replacement: "Mexico, Gulf of"
-    rationale: 'The term "Mexico, Gulf of" reflects literary warrant as well as colloquial usage patterns, and the term "America, Gulf of" is politically contested.'
+    replacement: ["Mexico, Gulf of", "America, Gulf of"]
+    rationale: 'to be determined'
+  "Mexico, Gulf of":
+    replacement: ["Mexico, Gulf of", "America, Gulf of"]
+    rationale: 'to be determined'
   "Only replace subdivision":
     replacement: "I have been replaced (subdivision)"
+    rationale: "to be determined"
   "Another subdivision for replacement":
     replacement: "Replace me too"

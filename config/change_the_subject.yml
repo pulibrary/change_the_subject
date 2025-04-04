@@ -99,15 +99,30 @@ main_term:
     replacement: "Prison labor"
     rationale: "Prison labor is currently listed in LCSH as a variant of the authorized heading Convict labor. However, Convict labor appears to have become less commonly used and prison labor to have a broader historical scope. This title change was recommended by the Prison Teaching Initiative at Princeton."
   "McKinley, Mount (Alaska)":
-    replacement: "Denali, Mount (Alaska)"
-    rationale: 'Denali is one of many long-standing Native names for this mountain, the name in common usage in Alaska, and the name with the most literary warrant. The Alaska Legislature has consistently requested that this mountain be called "Denali" since 1975, which was reaffirmed again in 2025. On the other hand, the name Mount McKinley had only been in use since 1896, in honor of a man who never set foot in Alaska or had any connection to the mountain. LCSH changed the authorized heading to "Denali, Mount (Alaska)" in 2015, and there is no need to change it back to the less common, less accurate name.'
+    replacement: ["Denali, Mount (Alaska)", "McKinley, Mount (Alaska)"]
+    rationale: 'to be determined'
+  "Denali, Mount (Alaska)":
+    replacement: ["Denali, Mount (Alaska)", "McKinley, Mount (Alaska)"]
+    rationale: "to be determined"
   "America, Gulf of":
-    replacement: "Mexico, Gulf of"
-    rationale: 'The term "Mexico, Gulf of" reflects literary warrant as well as colloquial usage patterns, and the term "America, Gulf of" is politically contested.'
+    replacement: ["Mexico, Gulf of", "America, Gulf of"]
+    rationale: 'to be determined'
+  "Mexico, Gulf of":
+    replacement: ["Mexico, Gulf of", "America, Gulf of"]
+    rationale: "to be determined"
 subdivision:
   "America, Gulf of":
-    replacement: "Mexico, Gulf of"
-    rationale: 'The term "Mexico, Gulf of" reflects literary warrant as well as colloquial usage patterns, and the term "America, Gulf of" is politically contested.'
+    replacement: ["Mexico, Gulf of", "America, Gulf of"]
+    rationale: 'to be determined'
+  "Mexico, Gulf of":
+    replacement: ["Mexico, Gulf of", "America, Gulf of"]
+    rationale: "to be determined"
   "Evacuation and relocation, 1942-1945":
     replacement: "Forced removal and internment, 1942-1945"
     rationale: "This subdivision has been updated by the Library of Congress, but some partner records have not yet been updated to reflect this."
+  "McKinley, Mount":
+    replacement: ["Denali, Mount", "McKinley, Mount"]
+    rationale: 'to be determined'
+  "Denali, Mount":
+    replacement: ["Denali, Mount", "McKinley, Mount"]
+    rationale: "to be determined"
