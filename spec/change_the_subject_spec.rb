@@ -104,7 +104,7 @@ RSpec.describe ChangeTheSubject do
 
     context "when the subdivision term is not at the beginning of the string" do
       let(:subject_terms) { ["Banks (Oceanography)—America, Gulf of."] }
-      let(:fixed_subject_terms) { ["Banks (Oceanography)—Mexico, Gulf of—America, Gulf of"] }
+      let(:fixed_subject_terms) { ["Banks (Oceanography)—Mexico, Gulf of", "Banks (Oceanography)—America, Gulf of"] }
 
       it "changes the subdivision term" do
         expect(described_class.fix(subject_terms: subject_terms)).to eq fixed_subject_terms
@@ -113,7 +113,7 @@ RSpec.describe ChangeTheSubject do
 
     context "when there is a period at the end of the term" do
       let(:subject_terms) { ["America, Gulf of."] }
-      let(:fixed_subject_terms) { ["Mexico, Gulf of—America, Gulf of"] }
+      let(:fixed_subject_terms) { ["Mexico, Gulf of", "America, Gulf of"] }
 
       it "removes the period and updates the term" do
         expect(described_class.fix(subject_terms: subject_terms)).to eq fixed_subject_terms
@@ -122,8 +122,12 @@ RSpec.describe ChangeTheSubject do
   end
 
   describe "#check_for_replacement_subdivision" do
+    # if the replacement for the replacement subdivision is an array ,
+    # then entirely one new subject heading needs to be generated
+    # for each each element in the replacement array
     it "returns the expected subdivision" do
-      expect(described_class.new.check_for_replacement_subdivision(term: "Banks (Oceanography)—America, Gulf of")).to eq("Banks (Oceanography)—Mexico, Gulf of—America, Gulf of")
+      # we may need to use a different method to calculate new headings
+      expect(described_class.new.check_for_replacement_subdivision(term: "Banks (Oceanography)—America, Gulf of")).to eq(["Banks (Oceanography)—Mexico, Gulf of", "Banks (Oceanography)—America, Gulf of"])
     end
 
     context "with a single main term" do
@@ -175,8 +179,10 @@ RSpec.describe ChangeTheSubject do
       end
       let(:fixed_subject_terms) do
         [
-          "Banks (Oceanography)—Mexico, Gulf of—America, Gulf of—Replace me too",
-          "Bottlenose dolphin—Mexico, Gulf of—America, Gulf of—Behavior"
+          "Banks (Oceanography)—Mexico, Gulf of—Replace me too",
+          "Banks (Oceanography)—America, Gulf of—Replace me too",
+          "Bottlenose dolphin—Mexico, Gulf of—Behavior",
+          "Bottlenose dolphin—America, Gulf of—Behavior"
         ]
       end
 

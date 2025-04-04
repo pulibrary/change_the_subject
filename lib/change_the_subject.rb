@@ -50,9 +50,11 @@ class ChangeTheSubject
     separators.each do |separator|
       subterms = term.split(separator)
       replacement = replacement_config_for_main_terms(subterms)
+
       next unless replacement
 
       new_terms = replacement_terms(replacement)
+
       return subterms.drop(new_terms.count)
                      .prepend(new_terms)
                      .join(separator)
@@ -72,6 +74,7 @@ class ChangeTheSubject
 
   def replace_subdivisions(term:, separator:)
     subterms = term.split(separator)
+
     subterms.each.with_index do |sub_term, index|
       next if index.zero?
 
@@ -81,7 +84,7 @@ class ChangeTheSubject
 
       subterms[index] = term_config["replacement"]
     end
-    subterms.flatten.uniq.join(separator)
+    subterms.join(separator)
   end
 
   def self.config_yaml
