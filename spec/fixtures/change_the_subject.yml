@@ -27,22 +27,22 @@ main_term:
     replacement: "I have been replaced (main)"
   "America, Gulf of":
     replacement: ["Mexico, Gulf of", "America, Gulf of"]
-    rationale: 'to be determined'
+    rationale: 'PUL decided to display both the old and new versions of this LCSH heading.'
   "Mexico, Gulf of":
     replacement: ["Mexico, Gulf of", "America, Gulf of"]
-    rationale: "to be determined"
+    rationale: "PUL decided to display both the old and new versions of this LCSH heading."
   "Test term":
     replacement: ""
     rationale: "For testing purposes only"
 subdivision:
   "America, Gulf of":
     replacement: ["Mexico, Gulf of", "America, Gulf of"]
-    rationale: 'to be determined'
+    rationale: 'PUL decided to display both the old and new versions of this LCSH heading.'
   "Mexico, Gulf of":
     replacement: ["Mexico, Gulf of", "America, Gulf of"]
-    rationale: 'to be determined'
+    rationale: 'PUL decided to display both the old and new versions of this LCSH heading.'
   "Only replace subdivision":
     replacement: "I have been replaced (subdivision)"
-    rationale: "to be determined"
+    rationale: "PUL decided to display both the old and new versions of this LCSH heading."
   "Another subdivision for replacement":
     replacement: "Replace me too"

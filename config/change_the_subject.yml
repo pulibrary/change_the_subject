@@ -100,29 +100,29 @@ main_term:
     rationale: "Prison labor is currently listed in LCSH as a variant of the authorized heading Convict labor. However, Convict labor appears to have become less commonly used and prison labor to have a broader historical scope. This title change was recommended by the Prison Teaching Initiative at Princeton."
   "McKinley, Mount (Alaska)":
     replacement: ["Denali, Mount (Alaska)", "McKinley, Mount (Alaska)"]
-    rationale: 'to be determined'
+    rationale: 'PUL decided to display both the old and new versions of this LCSH heading.'
   "Denali, Mount (Alaska)":
     replacement: ["Denali, Mount (Alaska)", "McKinley, Mount (Alaska)"]
-    rationale: "to be determined"
+    rationale: "PUL decided to display both the old and new versions of this LCSH heading."
   "America, Gulf of":
     replacement: ["Mexico, Gulf of", "America, Gulf of"]
-    rationale: 'to be determined'
+    rationale: 'PUL decided to display both the old and new versions of this LCSH heading.'
   "Mexico, Gulf of":
     replacement: ["Mexico, Gulf of", "America, Gulf of"]
-    rationale: "to be determined"
+    rationale: "PUL decided to display both the old and new versions of this LCSH heading."
 subdivision:
   "America, Gulf of":
     replacement: ["Mexico, Gulf of", "America, Gulf of"]
-    rationale: 'to be determined'
+    rationale: 'PUL decided to display both the old and new versions of this LCSH heading.'
   "Mexico, Gulf of":
     replacement: ["Mexico, Gulf of", "America, Gulf of"]
-    rationale: "to be determined"
+    rationale: "PUL decided to display both the old and new versions of this LCSH heading."
   "Evacuation and relocation, 1942-1945":
     replacement: "Forced removal and internment, 1942-1945"
     rationale: "This subdivision has been updated by the Library of Congress, but some partner records have not yet been updated to reflect this."
   "McKinley, Mount":
     replacement: ["Denali, Mount", "McKinley, Mount"]
-    rationale: 'to be determined'
+    rationale: 'PUL decided to display both the old and new versions of this LCSH heading.'
   "Denali, Mount":
     replacement: ["Denali, Mount", "McKinley, Mount"]
-    rationale: "to be determined"
+    rationale: "PUL decided to display both the old and new versions of this LCSH heading."
