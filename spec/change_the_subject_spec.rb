@@ -191,6 +191,24 @@ RSpec.describe ChangeTheSubject do
       end
     end
 
+    context "with one subdivision term for replacement" do
+      let(:subject_terms) do
+        [
+          "Banks (Oceanography)—America, Gulf of—Behavior"
+        ]
+      end
+      let(:fixed_subject_terms) do
+        [
+          "Banks (Oceanography)—Mexico, Gulf of—Behavior",
+          "Banks (Oceanography)—America, Gulf of—Behavior"
+        ]
+      end
+
+      it "replaces all subdivision terms" do
+        expect(described_class.fix(subject_terms: subject_terms)).to eq fixed_subject_terms
+      end
+    end
+
     it "does not remove periods for terms we are not replacing" do
       subject_terms = ["Y.M.C.A."]
       expect(described_class.fix(subject_terms: subject_terms)).to eq subject_terms

@@ -36,6 +36,7 @@ class ChangeTheSubject
 
     subject_terms.compact.reject(&:empty?).map do |term|
       replacement = check_for_replacement(term: term)
+
       subdivision_replacement = check_for_replacement_subdivision(term: replacement)
 
       subdivision_replacement unless subdivision_replacement.empty?
@@ -73,18 +74,44 @@ class ChangeTheSubject
   end
 
   def replace_subdivisions(term:, separator:)
+    new_headings = []
     subterms = term.split(separator)
-
+    main_term = subterms[0]
+    # "Banks (Oceanography)—Another subdivision for replacement-America, Gulf of"
     subterms.each.with_index do |sub_term, index|
-      next if index.zero?
+      if index.zero?
+        new_headings.append(main_term)
+      else
 
-      clean_subterm = sub_term.delete_suffix(".")
-      term_config = subdivision_term_mapping[clean_subterm]
-      next unless term_config
+        clean_subterm = sub_term.delete_suffix(".")
+        term_config = subdivision_term_mapping[clean_subterm]
+        if term_config.nil?
+          new_headings.each { |heading| heading << "#{separator}#{clean_subterm}" }
+        # "Banks (Oceanography)—America, Gulf of—Another subdivision for replacement"
+        else
+          existing_headings = new_headings.dup
+          if term_config["replacement"].instance_of?(Array)
+            term_config["replacement"].each do |replacement|
+              # next new_headings.push(replacement) if replacement == subterms[index]
+              replaced_versions = existing_headings.dup
 
-      subterms[index] = term_config["replacement"]
+              replaced_versions = replaced_versions.flat_map { |heading| [heading] * 2 }
+              replaced_versions.each do |heading|
+                heading << ("#{separator}#{replacement}")
+                new_headings.append(heading)
+              end
+            end
+          else
+            replaced_versions = existing_headings.dup
+            replaced_versions.each do |heading|
+              heading << "#{separator}#{term_config['replacement']}"
+              new_headings.append(heading)
+            end
+          end
+        end
+      end
     end
-    subterms.join(separator)
+    new_headings.compact.uniq
   end
 
   def self.config_yaml
@@ -110,6 +137,7 @@ class ChangeTheSubject
   def term_matches_subterms?(term, subterms)
     term_as_array = Array(term)
     term_as_array.count.times.all? do |index|
+      # byebug if term == "Mexico, Gulf of"
       clean_subterm = subterms[index].delete_suffix(".")
       term_as_array[index] == clean_subterm
     end
