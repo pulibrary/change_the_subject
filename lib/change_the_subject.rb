@@ -77,40 +77,35 @@ class ChangeTheSubject
     new_headings = []
     subterms = term.split(separator)
     main_term = subterms[0]
-    # "Banks (Oceanography)—Another subdivision for replacement-America, Gulf of"
+
     subterms.each.with_index do |sub_term, index|
       if index.zero?
         new_headings.append(main_term)
       else
-
         clean_subterm = sub_term.delete_suffix(".")
         term_config = subdivision_term_mapping[clean_subterm]
+
         if term_config.nil?
-          new_headings.each { |heading| heading << "#{separator}#{clean_subterm}" }
-        # "Banks (Oceanography)—America, Gulf of—Another subdivision for replacement"
+          # Append the clean subterm to all existing headings
+          new_headings.map! { |heading| "#{heading}#{separator}#{clean_subterm}" }
         else
           existing_headings = new_headings.dup
-          if term_config["replacement"].instance_of?(Array)
-            term_config["replacement"].each do |replacement|
-              # next new_headings.push(replacement) if replacement == subterms[index]
-              replaced_versions = existing_headings.dup
 
-              replaced_versions = replaced_versions.flat_map { |heading| [heading] * 2 }
-              replaced_versions.each do |heading|
-                heading << ("#{separator}#{replacement}")
-                new_headings.append(heading)
-              end
+          if term_config["replacement"].is_a?(Array)
+            # Handle multiple replacements
+            replacements = term_config["replacement"].map do |replacement|
+              existing_headings.map { |heading| "#{heading}#{separator}#{replacement}" }
             end
+            new_headings = replacements.flatten
           else
-            replaced_versions = existing_headings.dup
-            replaced_versions.each do |heading|
-              heading << "#{separator}#{term_config['replacement']}"
-              new_headings.append(heading)
-            end
+            # Handle single replacement
+            replacement = term_config["replacement"]
+            new_headings.map! { |heading| "#{heading}#{separator}#{replacement}" }
           end
         end
       end
     end
+    # Ensure the result is a flat array of unique strings
     new_headings.compact.uniq
   end
 
