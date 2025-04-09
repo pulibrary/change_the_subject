@@ -34,13 +34,14 @@ class ChangeTheSubject
   def fix(subject_terms:)
     return [] if subject_terms.nil?
 
-    subject_terms.compact.reject(&:empty?).map do |term|
+    final_terms = subject_terms.compact.reject(&:empty?).map do |term|
       replacement = check_for_replacement(term: term)
 
       subdivision_replacement = check_for_replacement_subdivision(term: replacement)
 
       subdivision_replacement unless subdivision_replacement.empty?
     end.compact.uniq
+    final_terms.flatten
   end
 
   # Given a term, check whether there is a suggested replacement. If there is, return
@@ -94,7 +95,11 @@ class ChangeTheSubject
           if term_config["replacement"].is_a?(Array)
             # Handle multiple replacements
             replacements = term_config["replacement"].map do |replacement|
-              existing_headings.map { |heading| "#{heading}#{separator}#{replacement}" }
+              if term_config["replacement"].include?(existing_headings.join)
+                existing_headings.map { |_heading| replacement }
+              else
+                existing_headings.map { |heading| "#{heading}#{separator}#{replacement}" }
+              end
             end
             new_headings = replacements.flatten
           else
@@ -105,7 +110,7 @@ class ChangeTheSubject
         end
       end
     end
-    # Ensure the result is a flat array of unique strings
+
     new_headings.compact.uniq
   end
 
@@ -132,7 +137,6 @@ class ChangeTheSubject
   def term_matches_subterms?(term, subterms)
     term_as_array = Array(term)
     term_as_array.count.times.all? do |index|
-      # byebug if term == "Mexico, Gulf of"
       clean_subterm = subterms[index].delete_suffix(".")
       term_as_array[index] == clean_subterm
     end
