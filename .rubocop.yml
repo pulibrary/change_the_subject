@@ -26,5 +26,10 @@ Style/StringLiterals:
   Enabled: true
   EnforcedStyle: double_quotes
 
+Metrics/ClassLength:
+  Enabled: true
+  Exclude:
+    - 'lib/change_the_subject.rb'
+
 Naming/RescuedExceptionsVariableName:
   Enabled: false

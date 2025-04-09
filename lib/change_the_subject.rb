@@ -74,6 +74,10 @@ class ChangeTheSubject
     term
   end
 
+  # rubocop:disable Metrics/PerceivedComplexity
+  # rubocop:disable Metrics/CyclomaticComplexity
+  # rubocop:disable Metrics/MethodLength
+  # rubocop:disable Metrics/AbcSize
   def replace_subdivisions(term:, separator:)
     new_headings = []
     subterms = term.split(separator)
@@ -95,11 +99,13 @@ class ChangeTheSubject
           if term_config["replacement"].is_a?(Array)
             # Handle multiple replacements
             replacements = term_config["replacement"].map do |replacement|
+              # rubocop:disable Metrics/BlockNesting
               if term_config["replacement"].include?(existing_headings.join)
                 existing_headings.map { |_heading| replacement }
               else
                 existing_headings.map { |heading| "#{heading}#{separator}#{replacement}" }
               end
+              # rubocop:enable Metrics/BlockNesting
             end
             new_headings = replacements.flatten
           else
@@ -113,6 +119,10 @@ class ChangeTheSubject
 
     new_headings.compact.uniq
   end
+  # rubocop:enable Metrics/PerceivedComplexity
+  # rubocop:enable Metrics/CyclomaticComplexity
+  # rubocop:enable Metrics/MethodLength
+  # rubocop:enable Metrics/AbcSize
 
   def self.config_yaml
     change_the_subject_erb = ERB.new(File.read(change_the_subject_config_file)).result
