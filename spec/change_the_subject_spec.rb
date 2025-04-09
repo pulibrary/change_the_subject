@@ -37,7 +37,7 @@ RSpec.describe ChangeTheSubject do
     end
 
     it "suggests a replacement for subdivisions" do
-      expect(described_class.new.check_for_replacement_subdivision(term: "Japanese Americans—Evacuation and relocation, 1942-1945")).to eq("Japanese Americans—Forced removal and internment, 1942-1945")
+      expect(described_class.new.check_for_replacement_subdivision(term: "Japanese Americans—Evacuation and relocation, 1942-1945")).to eq(["Japanese Americans—Forced removal and internment, 1942-1945"])
       expect(described_class.new.check_for_replacement_subdivision(term: "Aleuts—Evacuation and relocation, 1942-1945")).to eq("Aleuts—Forced removal and internment, 1942-1945")
       expect(described_class.new.check_for_replacement_subdivision(term: "German Americans—Evacuation and relocation, 1942-1945")).to eq("German Americans—Forced removal and internment, 1942-1945")
       expect(described_class.new.check_for_replacement_subdivision(term: "Italian Americans—Evacuation and relocation, 1942-1945")).to eq("Italian Americans—Forced removal and internment, 1942-1945")
@@ -112,7 +112,7 @@ RSpec.describe ChangeTheSubject do
     end
 
     context "when there is a period at the end of the term" do
-      let(:subject_terms) { ["America, Gulf of."] }
+      let(:subject_terms) { ["America, Gulf of.", "Mexico, Gulf of."] }
       let(:fixed_subject_terms) { ["Mexico, Gulf of", "America, Gulf of"] }
 
       it "removes the period and updates the term" do
@@ -244,8 +244,10 @@ RSpec.describe ChangeTheSubject do
       end
       let(:fixed_subject_terms) do
         [
-          "Banks (Oceanography) || Mexico, Gulf of || America, Gulf of",
-          "Bottlenose dolphin — Mexico, Gulf of — America, Gulf of — Behavior"
+          "Banks (Oceanography) || Mexico, Gulf of",
+          "Banks (Oceanography) || America, Gulf of",
+          "Bottlenose dolphin — Mexico, Gulf of — Behavior",
+          "Bottlenose dolphin — America, Gulf of — Behavior"
         ]
       end
 
