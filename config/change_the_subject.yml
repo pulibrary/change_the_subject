@@ -104,6 +104,12 @@ main_term:
   "America, Gulf of":
     replacement: "Mexico, Gulf of"
     rationale: 'The term "Mexico, Gulf of" reflects literary warrant as well as colloquial usage patterns, and the term "America, Gulf of" is politically contested.'
+  "America, Gulf of, Watershed":
+    replacement: "Mexico, Gulf of, Watershed"
+    rationale: 'The term "Mexico, Gulf of" reflects literary warrant as well as colloquial usage patterns, and the term "America, Gulf of" is politically contested.'
+  "Central Slope (Gulf of America)":
+    replacement: "Central Slope (Gulf of Mexico)"
+    rationale: 'The term "Mexico, Gulf of" reflects literary warrant as well as colloquial usage patterns, and the term "America, Gulf of" is politically contested.'
 subdivision:
   "America, Gulf of":
     replacement: "Mexico, Gulf of"
