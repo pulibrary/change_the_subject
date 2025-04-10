@@ -62,35 +62,20 @@ class ChangeTheSubject
       results.concat(process_new_terms(subterms, new_terms, separator))
     end
 
-    results_check(results, term)
+    results_replacement_check(results, term)
   end
 
   def check_for_replacement_subdivision(term:)
     results = []
     separators.each do |separator|
-      if term.is_a?(Array)
-        term.each do |sub_term|
-          next unless sub_term.include?(separator)
+      sub_terms = term.is_a?(Array) ? term : [term]
+      sub_terms.each do |sub_term|
+        next unless sub_term.include?(separator)
 
-          results.concat(replace_subdivisions(term: sub_term, separator: separator))
-        end
-      else
-        next unless term.include?(separator)
-
-        results.concat(replace_subdivisions(term: term, separator: separator))
+        results.concat(replace_subdivisions(term: sub_term, separator: separator))
       end
     end
-    if results.empty?
-      term
-    else
-      (results.size == 1 ? results.first : results.flatten.uniq)
-    end
-  end
-
-  def replace_subdivisions(term:, separator:)
-    new_headings = Array(term.split(separator)[0])
-    process_subterms(term, separator, new_headings)
-    new_headings.compact.uniq
+    results_replacement_subdivisions_check(results, term)
   end
 
   def self.config_yaml
@@ -106,6 +91,12 @@ class ChangeTheSubject
 
   private
 
+  def replace_subdivisions(term:, separator:)
+    new_headings = Array(term.split(separator)[0])
+    process_subterms(term, separator, new_headings)
+    new_headings.compact.uniq
+  end
+
   def process_new_terms(subterms, new_terms, separator)
     if new_terms.is_a?(Array)
       subject_term = subterms.drop(1).join(separator)
@@ -115,7 +106,13 @@ class ChangeTheSubject
     end
   end
 
-  def results_check(results, term)
+  def results_replacement_subdivisions_check(results, term)
+    return term if results.empty?
+
+    results.size == 1 ? results.first : results.flatten.uniq
+  end
+
+  def results_replacement_check(results, term)
     return term if results.empty?
 
     results.size == 1 ? results.first : results.uniq
