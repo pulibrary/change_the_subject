@@ -34,16 +34,15 @@ class ChangeTheSubject
   def fix(subject_terms:)
     return [] if subject_terms.nil?
 
-    final_terms = subject_terms.compact.reject(&:empty?).map do |term|
+    subject_terms.compact.reject(&:empty?).map do |term|
       replacement = check_for_replacement(term: term)
       replacements = Array(replacement)
-      
+
       replacements.map do |r|
         subdivision_replacement = check_for_replacement_subdivision(term: r)
         subdivision_replacement unless subdivision_replacement.empty?
       end
     end.flatten.compact.uniq
-    final_terms
   end
 
   # Given a term, check whether there is a suggested replacement. If there is, return
@@ -60,17 +59,10 @@ class ChangeTheSubject
 
       new_terms = replacement_terms(replacement)
 
-      if new_terms.is_a?(Array)
-        subject_term = subterms.drop(1).join(separator)
-        results.concat(new_terms.map { |new_term| subject_term.empty? ? new_term : "#{new_term}#{separator}#{subject_term}" })
-      else
-        results << subterms.drop(new_terms.count)
-                           .prepend(new_terms)
-                           .join(separator)
-      end
+      results.concat(process_new_terms(subterms, new_terms, separator))
     end
 
-    results.empty? ? term : (results.size == 1 ? results.first : results.uniq)
+    results_check(results, term)
   end
 
   def check_for_replacement_subdivision(term:)
@@ -79,65 +71,27 @@ class ChangeTheSubject
       if term.is_a?(Array)
         term.each do |sub_term|
           next unless sub_term.include?(separator)
+
           results.concat(replace_subdivisions(term: sub_term, separator: separator))
         end
       else
         next unless term.include?(separator)
+
         results.concat(replace_subdivisions(term: term, separator: separator))
       end
     end
-    results.empty? ? term : (results.size == 1 ? results.first : results.flatten.uniq)
+    if results.empty?
+      term
+    else
+      (results.size == 1 ? results.first : results.flatten.uniq)
+    end
   end
 
-  # rubocop:disable Metrics/PerceivedComplexity
-  # rubocop:disable Metrics/CyclomaticComplexity
-  # rubocop:disable Metrics/MethodLength
-  # rubocop:disable Metrics/AbcSize
   def replace_subdivisions(term:, separator:)
-    new_headings = []
-    subterms = term.split(separator)
-    main_term = subterms[0]
-
-    subterms.each.with_index do |sub_term, index|
-      if index.zero?
-        new_headings.append(main_term)
-      else
-        clean_subterm = sub_term.delete_suffix(".")
-        term_config = subdivision_term_mapping[clean_subterm]
-
-        if term_config.nil?
-          # Append the clean subterm to all existing headings
-          new_headings.map! { |heading| "#{heading}#{separator}#{sub_term}" }
-        else
-          existing_headings = new_headings.dup
-
-          if term_config["replacement"].is_a?(Array)
-            # Handle multiple replacements
-            replacements = term_config["replacement"].map do |replacement|
-              # rubocop:disable Metrics/BlockNesting
-              if term_config["replacement"].include?(existing_headings.join)
-                existing_headings.map { |_heading| replacement }
-              else
-                existing_headings.map { |heading| "#{heading}#{separator}#{replacement}" }
-              end
-              # rubocop:enable Metrics/BlockNesting
-            end
-            new_headings = replacements.flatten
-          else
-            # Handle single replacement
-            replacement = term_config["replacement"]
-            new_headings.map! { |heading| "#{heading}#{separator}#{replacement}" }
-          end
-        end
-      end
-    end
-
+    new_headings = Array(term.split(separator)[0])
+    process_subterms(term, separator, new_headings)
     new_headings.compact.uniq
   end
-  # rubocop:enable Metrics/PerceivedComplexity
-  # rubocop:enable Metrics/CyclomaticComplexity
-  # rubocop:enable Metrics/MethodLength
-  # rubocop:enable Metrics/AbcSize
 
   def self.config_yaml
     change_the_subject_erb = ERB.new(File.read(change_the_subject_config_file)).result
@@ -151,6 +105,68 @@ class ChangeTheSubject
   end
 
   private
+
+  def process_new_terms(subterms, new_terms, separator)
+    if new_terms.is_a?(Array)
+      subject_term = subterms.drop(1).join(separator)
+      new_terms.map { |new_term| subject_term.empty? ? new_term : "#{new_term}#{separator}#{subject_term}" }
+    else
+      Array(subterms.drop(new_terms.count).prepend(new_terms).join(separator))
+    end
+  end
+
+  def results_check(results, term)
+    return term if results.empty?
+
+    results.size == 1 ? results.first : results.uniq
+  end
+
+  def process_subterms(term, separator, new_headings)
+    term.split(separator).each.with_index do |sub_term, index|
+      next if index.zero?
+
+      process_subdivision(sub_term, separator, new_headings)
+    end
+  end
+
+  def process_subdivision(sub_term, separator, new_headings)
+    clean_subterm = sub_term.delete_suffix(".")
+    term_config = subdivision_term_mapping[clean_subterm]
+
+    if term_config.nil?
+      append_original_subterm(sub_term, separator, new_headings)
+    else
+      process_replacement(term_config, separator, new_headings)
+    end
+  end
+
+  def append_original_subterm(sub_term, separator, new_headings)
+    new_headings.map! { |heading| "#{heading}#{separator}#{sub_term}" }
+  end
+
+  def process_replacement(term_config, separator, new_headings)
+    existing_headings = new_headings.dup
+    if term_config["replacement"].is_a?(Array)
+      handle_multiple_replacements(term_config, separator, existing_headings, new_headings)
+    else
+      handle_single_replacement(term_config["replacement"], separator, new_headings)
+    end
+  end
+
+  def handle_multiple_replacements(term_config, separator, existing_headings, new_headings)
+    replacements = term_config["replacement"].map do |replacement|
+      if term_config["replacement"].include?(existing_headings.join)
+        existing_headings.map { |_heading| replacement }
+      else
+        existing_headings.map { |heading| "#{heading}#{separator}#{replacement}" }
+      end
+    end
+    new_headings.replace(replacements.flatten)
+  end
+
+  def handle_single_replacement(replacement, separator, new_headings)
+    new_headings.map! { |heading| "#{heading}#{separator}#{replacement}" }
+  end
 
   def replacement_config_for_main_terms(subterms)
     matching_key = main_term_mapping.keys.find do |term_to_replace|
