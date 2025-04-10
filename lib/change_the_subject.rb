@@ -98,12 +98,10 @@ class ChangeTheSubject
   end
 
   def process_new_terms(subterms, new_terms, separator)
-    if new_terms.is_a?(Array)
-      subject_term = subterms.drop(1).join(separator)
-      new_terms.map { |new_term| subject_term.empty? ? new_term : "#{new_term}#{separator}#{subject_term}" }
-    else
-      Array(subterms.drop(new_terms.count).prepend(new_terms).join(separator))
-    end
+    return unless new_terms.is_a?(Array)
+
+    subject_term = subterms.drop(1).join(separator)
+    new_terms.map { |new_term| subject_term.empty? ? new_term : "#{new_term}#{separator}#{subject_term}" }
   end
 
   def results_replacement_subdivisions_check(results, term)
@@ -152,11 +150,7 @@ class ChangeTheSubject
 
   def handle_multiple_replacements(term_config, separator, existing_headings, new_headings)
     replacements = term_config["replacement"].map do |replacement|
-      if term_config["replacement"].include?(existing_headings.join)
-        existing_headings.map { |_heading| replacement }
-      else
-        existing_headings.map { |heading| "#{heading}#{separator}#{replacement}" }
-      end
+      existing_headings.map { |heading| "#{heading}#{separator}#{replacement}" }
     end
     new_headings.replace(replacements.flatten)
   end
