@@ -36,12 +36,14 @@ class ChangeTheSubject
 
     final_terms = subject_terms.compact.reject(&:empty?).map do |term|
       replacement = check_for_replacement(term: term)
-
-      subdivision_replacement = check_for_replacement_subdivision(term: replacement)
-
-      subdivision_replacement unless subdivision_replacement.empty?
-    end.compact.uniq
-    final_terms.flatten
+      replacements = Array(replacement)
+      
+      replacements.map do |r|
+        subdivision_replacement = check_for_replacement_subdivision(term: r)
+        subdivision_replacement unless subdivision_replacement.empty?
+      end
+    end.flatten.compact.uniq
+    final_terms
   end
 
   # Given a term, check whether there is a suggested replacement. If there is, return
@@ -49,6 +51,7 @@ class ChangeTheSubject
   # @param [String] term
   # @return [String]
   def check_for_replacement(term:)
+    results = []
     separators.each do |separator|
       subterms = term.split(separator)
       replacement = replacement_config_for_main_terms(subterms)
@@ -57,21 +60,33 @@ class ChangeTheSubject
 
       new_terms = replacement_terms(replacement)
 
-      return subterms.drop(new_terms.count)
-                     .prepend(new_terms)
-                     .join(separator)
+      if new_terms.is_a?(Array)
+        subject_term = subterms.drop(1).join(separator)
+        results.concat(new_terms.map { |new_term| subject_term.empty? ? new_term : "#{new_term}#{separator}#{subject_term}" })
+      else
+        results << subterms.drop(new_terms.count)
+                           .prepend(new_terms)
+                           .join(separator)
+      end
     end
 
-    term
+    results.empty? ? term : (results.size == 1 ? results.first : results.uniq)
   end
 
   def check_for_replacement_subdivision(term:)
+    results = []
     separators.each do |separator|
-      next unless term.include?(separator)
-
-      return replace_subdivisions(term: term, separator: separator)
+      if term.is_a?(Array)
+        term.each do |sub_term|
+          next unless sub_term.include?(separator)
+          results.concat(replace_subdivisions(term: sub_term, separator: separator))
+        end
+      else
+        next unless term.include?(separator)
+        results.concat(replace_subdivisions(term: term, separator: separator))
+      end
     end
-    term
+    results.empty? ? term : (results.size == 1 ? results.first : results.flatten.uniq)
   end
 
   # rubocop:disable Metrics/PerceivedComplexity
@@ -92,7 +107,7 @@ class ChangeTheSubject
 
         if term_config.nil?
           # Append the clean subterm to all existing headings
-          new_headings.map! { |heading| "#{heading}#{separator}#{clean_subterm}" }
+          new_headings.map! { |heading| "#{heading}#{separator}#{sub_term}" }
         else
           existing_headings = new_headings.dup
 
@@ -146,6 +161,7 @@ class ChangeTheSubject
 
   def term_matches_subterms?(term, subterms)
     term_as_array = Array(term)
+    # byebug if term_as_array == ['Another subdivision for replacement']
     term_as_array.count.times.all? do |index|
       clean_subterm = subterms[index].delete_suffix(".")
       term_as_array[index] == clean_subterm
