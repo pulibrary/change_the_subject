@@ -36,10 +36,13 @@ class ChangeTheSubject
 
     subject_terms.compact.reject(&:empty?).map do |term|
       replacement = check_for_replacement(term: term)
-      subdivision_replacement = check_for_replacement_subdivision(term: replacement)
+      replacements = Array(replacement)
 
-      subdivision_replacement unless subdivision_replacement.empty?
-    end.compact.uniq
+      replacements.map do |r|
+        subdivision_replacement = check_for_replacement_subdivision(term: r)
+        subdivision_replacement unless subdivision_replacement.empty?
+      end
+    end.flatten.compact.uniq
   end
 
   # Given a term, check whether there is a suggested replacement. If there is, return
@@ -47,42 +50,32 @@ class ChangeTheSubject
   # @param [String] term
   # @return [String]
   def check_for_replacement(term:)
+    results = []
     separators.each do |separator|
       subterms = term.split(separator)
       replacement = replacement_config_for_main_terms(subterms)
+
       next unless replacement
 
       new_terms = replacement_terms(replacement)
-      return subterms.drop(new_terms.count)
-                     .prepend(new_terms)
-                     .join(separator)
+
+      results.concat(process_new_terms(subterms, new_terms, separator))
     end
 
-    term
+    results_replacement_check(results, term)
   end
 
   def check_for_replacement_subdivision(term:)
+    results = []
     separators.each do |separator|
-      next unless term.include?(separator)
+      sub_terms = term.is_a?(Array) ? term : [term]
+      sub_terms.each do |sub_term|
+        next unless sub_term.include?(separator)
 
-      return replace_subdivisions(term: term, separator: separator)
+        results.concat(replace_subdivisions(term: sub_term, separator: separator))
+      end
     end
-    term
-  end
-
-  def replace_subdivisions(term:, separator:)
-    subterms = term.split(separator)
-    subterms.each.with_index do |sub_term, index|
-      next if index.zero?
-
-      clean_subterm = sub_term.delete_suffix(".")
-      term_config = subdivision_term_mapping[clean_subterm]
-      next unless term_config
-
-      subterms[index] = term_config["replacement"]
-    end
-
-    subterms.join(separator)
+    results_replacement_subdivisions_check(results, term)
   end
 
   def self.config_yaml
@@ -98,6 +91,74 @@ class ChangeTheSubject
 
   private
 
+  def replace_subdivisions(term:, separator:)
+    new_headings = Array(term.split(separator)[0])
+    process_subterms(term, separator, new_headings)
+    new_headings.compact.uniq
+  end
+
+  def process_new_terms(subterms, new_terms, separator)
+    return unless new_terms.is_a?(Array)
+
+    subject_term = subterms.drop(1).join(separator)
+    new_terms.map { |new_term| subject_term.empty? ? new_term : "#{new_term}#{separator}#{subject_term}" }
+  end
+
+  def results_replacement_subdivisions_check(results, term)
+    return term if results.empty?
+
+    results.size == 1 ? results.first : results.flatten.uniq
+  end
+
+  def results_replacement_check(results, term)
+    return term if results.empty?
+
+    results.size == 1 ? results.first : results.uniq
+  end
+
+  def process_subterms(term, separator, new_headings)
+    term.split(separator).each.with_index do |sub_term, index|
+      next if index.zero?
+
+      process_subdivision(sub_term, separator, new_headings)
+    end
+  end
+
+  def process_subdivision(sub_term, separator, new_headings)
+    clean_subterm = sub_term.delete_suffix(".")
+    term_config = subdivision_term_mapping[clean_subterm]
+
+    if term_config.nil?
+      append_original_subterm(sub_term, separator, new_headings)
+    else
+      process_replacement(term_config, separator, new_headings)
+    end
+  end
+
+  def append_original_subterm(sub_term, separator, new_headings)
+    new_headings.map! { |heading| "#{heading}#{separator}#{sub_term}" }
+  end
+
+  def process_replacement(term_config, separator, new_headings)
+    existing_headings = new_headings.dup
+    if term_config["replacement"].is_a?(Array)
+      handle_multiple_replacements(term_config, separator, existing_headings, new_headings)
+    else
+      handle_single_replacement(term_config["replacement"], separator, new_headings)
+    end
+  end
+
+  def handle_multiple_replacements(term_config, separator, existing_headings, new_headings)
+    replacements = term_config["replacement"].map do |replacement|
+      existing_headings.map { |heading| "#{heading}#{separator}#{replacement}" }
+    end
+    new_headings.replace(replacements.flatten)
+  end
+
+  def handle_single_replacement(replacement, separator, new_headings)
+    new_headings.map! { |heading| "#{heading}#{separator}#{replacement}" }
+  end
+
   def replacement_config_for_main_terms(subterms)
     matching_key = main_term_mapping.keys.find do |term_to_replace|
       term_matches_subterms?(term_to_replace, subterms)
@@ -107,6 +168,7 @@ class ChangeTheSubject
 
   def term_matches_subterms?(term, subterms)
     term_as_array = Array(term)
+    # byebug if term_as_array == ['Another subdivision for replacement']
     term_as_array.count.times.all? do |index|
       clean_subterm = subterms[index].delete_suffix(".")
       term_as_array[index] == clean_subterm

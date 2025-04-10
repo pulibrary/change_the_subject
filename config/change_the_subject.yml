@@ -99,15 +99,66 @@ main_term:
     replacement: "Prison labor"
     rationale: "Prison labor is currently listed in LCSH as a variant of the authorized heading Convict labor. However, Convict labor appears to have become less commonly used and prison labor to have a broader historical scope. This title change was recommended by the Prison Teaching Initiative at Princeton."
   "McKinley, Mount (Alaska)":
-    replacement: "Denali, Mount (Alaska)"
-    rationale: 'Denali is one of many long-standing Native names for this mountain, the name in common usage in Alaska, and the name with the most literary warrant. The Alaska Legislature has consistently requested that this mountain be called "Denali" since 1975, which was reaffirmed again in 2025. On the other hand, the name Mount McKinley had only been in use since 1896, in honor of a man who never set foot in Alaska or had any connection to the mountain. LCSH changed the authorized heading to "Denali, Mount (Alaska)" in 2015, and there is no need to change it back to the less common, less accurate name.'
+    replacement: ["Denali, Mount (Alaska)", "McKinley, Mount (Alaska)"]
+    rationale: 'Denali is one of many long-standing Native names for this mountain, the name in common usage in Alaska, and the name with the most literary warrant. The Alaska Legislature has consistently requested that this mountain be called "Denali" since 1975, which was reaffirmed again in 2025. On the other hand, the name Mount McKinley had only been in use since 1896, in honor of a man who never set foot in Alaska or had any connection to the mountain. PUL decided to display both the old and new versions of this LCSH heading.'
+  "Denali, Mount (Alaska)":
+    replacement: ["Denali, Mount (Alaska)", "McKinley, Mount (Alaska)"]
+    rationale: 'Denali is one of many long-standing Native names for this mountain, the name in common usage in Alaska, and the name with the most literary warrant. The Alaska Legislature has consistently requested that this mountain be called "Denali" since 1975, which was reaffirmed again in 2025. On the other hand, the name Mount McKinley had only been in use since 1896, in honor of a man who never set foot in Alaska or had any connection to the mountain. PUL decided to display both the old and new versions of this LCSH heading.'
   "America, Gulf of":
-    replacement: "Mexico, Gulf of"
-    rationale: 'The term "Mexico, Gulf of" reflects literary warrant as well as colloquial usage patterns, and the term "America, Gulf of" is politically contested.'
+    replacement: ["Mexico, Gulf of", "America, Gulf of"]
+    rationale: 'The term "Mexico, Gulf of" reflects literary warrant as well as colloquial usage patterns, and the term "America, Gulf of" is politically contested. PUL decided to display both the old and new versions of this LCSH heading.'
+  "Mexico, Gulf of":
+    replacement: ["Mexico, Gulf of", "America, Gulf of"]
+    rationale: 'The term "Mexico, Gulf of" reflects literary warrant as well as colloquial usage patterns, and the term "America, Gulf of" is politically contested. PUL decided to display both the old and new versions of this LCSH heading.'
+  "Mount McKinley National Park Headquarters Historic District (Alaska)":
+    replacement: ["Mount McKinley National Park Headquarters Historic District (Alaska)", "Denali National Park and Preserve Headquarters (Alaska)"]
+    rationale: 'Denali is one of many long-standing Native names for this mountain, the name in common usage in Alaska, and the name with the most literary warrant. The Alaska Legislature has consistently requested that this mountain be called "Denali" since 1975, which was reaffirmed again in 2025. On the other hand, the name Mount McKinley had only been in use since 1896, in honor of a man who never set foot in Alaska or had any connection to the mountain. PUL decided to display both the old and new versions of this LCSH heading.'
+  "Denali National Park and Preserve Headquarters (Alaska)":
+    replacement: ["Mount McKinley National Park Headquarters Historic District (Alaska)", "Denali National Park and Preserve Headquarters (Alaska)"]
+    rationale: 'Denali is one of many long-standing Native names for this mountain, the name in common usage in Alaska, and the name with the most literary warrant. The Alaska Legislature has consistently requested that this mountain be called "Denali" since 1975, which was reaffirmed again in 2025. On the other hand, the name Mount McKinley had only been in use since 1896, in honor of a man who never set foot in Alaska or had any connection to the mountain. PUL decided to display both the old and new versions of this LCSH heading.'
+  "Central Slope (Gulf of America)":
+    replacement: ["Central Slope (Gulf of Mexico)", "Central Slope (Gulf of America)"]
+    rationale: 'The term "Mexico, Gulf of" reflects literary warrant as well as colloquial usage patterns, and the term "America, Gulf of" is politically contested. PUL decided to display both the old and new versions of this LCSH heading.'
+  "Central Slope (Gulf of Mexico)":
+    replacement: ["Central Slope (Gulf of Mexico)", "Central Slope (Gulf of America)"]
+    rationale: 'The term "Mexico, Gulf of" reflects literary warrant as well as colloquial usage patterns, and the term "America, Gulf of" is politically contested. PUL decided to display both the old and new versions of this LCSH heading.'
+  "Mexico, Gulf of, Watershed":
+    replacement: ["Mexico, Gulf of, Watershed", "America, Gulf of, Watershed"]
+    rationale: 'The term "Mexico, Gulf of" reflects literary warrant as well as colloquial usage patterns, and the term "America, Gulf of" is politically contested. PUL decided to display both the old and new versions of this LCSH heading.'
+  "America, Gulf of, Watershed":
+    replacement: ["Mexico, Gulf of, Watershed", "America, Gulf of, Watershed"]
+    rationale: 'The term "Mexico, Gulf of" reflects literary warrant as well as colloquial usage patterns, and the term "America, Gulf of" is politically contested. PUL decided to display both the old and new versions of this LCSH heading.'
 subdivision:
   "America, Gulf of":
-    replacement: "Mexico, Gulf of"
-    rationale: 'The term "Mexico, Gulf of" reflects literary warrant as well as colloquial usage patterns, and the term "America, Gulf of" is politically contested.'
+    replacement: ["Mexico, Gulf of", "America, Gulf of"]
+    rationale: 'The term "Mexico, Gulf of" reflects literary warrant as well as colloquial usage patterns, and the term "America, Gulf of" is politically contested. PUL decided to display both the old and new versions of this LCSH heading.'
+  "Mexico, Gulf of":
+    replacement: ["Mexico, Gulf of", "America, Gulf of"]
+    rationale: 'The term "Mexico, Gulf of" reflects literary warrant as well as colloquial usage patterns, and the term "America, Gulf of" is politically contested. PUL decided to display both the old and new versions of this LCSH heading.'
+  "Mexico, Gulf of, Watershed":
+    replacement: ["Mexico, Gulf of, Watershed", "America, Gulf of, Watershed"]
+    rationale: 'The term "Mexico, Gulf of" reflects literary warrant as well as colloquial usage patterns, and the term "America, Gulf of" is politically contested. PUL decided to display both the old and new versions of this LCSH heading.'
+  "America, Gulf of, Watershed":
+    replacement: ["Mexico, Gulf of, Watershed", "America, Gulf of, Watershed"]
+    rationale: 'The term "Mexico, Gulf of" reflects literary warrant as well as colloquial usage patterns, and the term "America, Gulf of" is politically contested. PUL decided to display both the old and new versions of this LCSH heading.'
+  "Central Slope (Gulf of America)":
+    replacement: ["Central Slope (Gulf of America)", "Central Slope (Gulf of Mexico)"]
+    rationale: 'The term "Mexico, Gulf of" reflects literary warrant as well as colloquial usage patterns, and the term "America, Gulf of" is politically contested. PUL decided to display both the old and new versions of this LCSH heading.'
+  "Central Slope (Gulf of Mexico)":
+    replacement: ["Central Slope (Gulf of America)", "Central Slope (Gulf of Mexico)"]
+    rationale: 'The term "Mexico, Gulf of" reflects literary warrant as well as colloquial usage patterns, and the term "America, Gulf of" is politically contested. PUL decided to display both the old and new versions of this LCSH heading.'
   "Evacuation and relocation, 1942-1945":
     replacement: "Forced removal and internment, 1942-1945"
     rationale: "This subdivision has been updated by the Library of Congress, but some partner records have not yet been updated to reflect this."
+  "McKinley, Mount":
+    replacement: ["Denali, Mount", "McKinley, Mount"]
+    rationale: 'Denali is one of many long-standing Native names for this mountain, the name in common usage in Alaska, and the name with the most literary warrant. The Alaska Legislature has consistently requested that this mountain be called "Denali" since 1975, which was reaffirmed again in 2025. On the other hand, the name Mount McKinley had only been in use since 1896, in honor of a man who never set foot in Alaska or had any connection to the mountain. PUL decided to display both the old and new versions of this LCSH heading.'
+  "Denali, Mount":
+    replacement: ["Denali, Mount", "McKinley, Mount"]
+    rationale: 'Denali is one of many long-standing Native names for this mountain, the name in common usage in Alaska, and the name with the most literary warrant. The Alaska Legislature has consistently requested that this mountain be called "Denali" since 1975, which was reaffirmed again in 2025. On the other hand, the name Mount McKinley had only been in use since 1896, in honor of a man who never set foot in Alaska or had any connection to the mountain. PUL decided to display both the old and new versions of this LCSH heading.'
+  "Mount McKinley National Park Headquarters Historic District":
+    replacement: ["Mount McKinley National Park Headquarters Historic District", "Denali National Park and Preserve Headquarters"]
+    rationale: 'Denali is one of many long-standing Native names for this mountain, the name in common usage in Alaska, and the name with the most literary warrant. The Alaska Legislature has consistently requested that this mountain be called "Denali" since 1975, which was reaffirmed again in 2025. On the other hand, the name Mount McKinley had only been in use since 1896, in honor of a man who never set foot in Alaska or had any connection to the mountain. PUL decided to display both the old and new versions of this LCSH heading.'
+  "Denali National Park and Preserve Headquarters":
+    replacement: ["Mount McKinley National Park Headquarters Historic District", "Denali National Park and Preserve Headquarters"]
+    rationale: 'Denali is one of many long-standing Native names for this mountain, the name in common usage in Alaska, and the name with the most literary warrant. The Alaska Legislature has consistently requested that this mountain be called "Denali" since 1975, which was reaffirmed again in 2025. On the other hand, the name Mount McKinley had only been in use since 1896, in honor of a man who never set foot in Alaska or had any connection to the mountain. PUL decided to display both the old and new versions of this LCSH heading.'
