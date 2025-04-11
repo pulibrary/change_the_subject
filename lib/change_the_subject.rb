@@ -92,8 +92,9 @@ class ChangeTheSubject
   private
 
   def replace_subdivisions(term:, separator:)
-    new_headings = Array(term.split(separator)[0])
-    process_subterms(term, separator, new_headings)
+    subterms = term.split(separator)
+    new_headings = Array(subterms[0])
+    process_subterms(subterms, separator, new_headings)
     new_headings.compact.uniq
   end
 
@@ -116,8 +117,8 @@ class ChangeTheSubject
     results.size == 1 ? results.first : results.uniq
   end
 
-  def process_subterms(term, separator, new_headings)
-    term.split(separator).each.with_index do |sub_term, index|
+  def process_subterms(subterms, separator, new_headings)
+    subterms.each_with_index do |sub_term, index|
       next if index.zero?
 
       process_subdivision(sub_term, separator, new_headings)
@@ -149,14 +150,15 @@ class ChangeTheSubject
   end
 
   def handle_multiple_replacements(term_config, separator, existing_headings, new_headings)
-    replacements = term_config["replacement"].map do |replacement|
-      existing_headings.map { |heading| "#{heading}#{separator}#{replacement}" }
-    end
-    new_headings.replace(replacements.flatten)
+    new_headings.replace(
+      term_config["replacement"].reduce([]) do |accumulator, replacement|
+        accumulator + existing_headings.map { |heading| "#{heading}#{separator}#{replacement}" }
+      end
+    )
   end
 
   def handle_single_replacement(replacement, separator, new_headings)
-    new_headings.map! { |heading| "#{heading}#{separator}#{replacement}" }
+    new_headings.replace(new_headings.map { |heading| "#{heading}#{separator}#{replacement}" })
   end
 
   def replacement_config_for_main_terms(subterms)
@@ -168,7 +170,6 @@ class ChangeTheSubject
 
   def term_matches_subterms?(term, subterms)
     term_as_array = Array(term)
-    # byebug if term_as_array == ['Another subdivision for replacement']
     term_as_array.count.times.all? do |index|
       clean_subterm = subterms[index].delete_suffix(".")
       term_as_array[index] == clean_subterm
