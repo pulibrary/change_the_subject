@@ -111,6 +111,15 @@ RSpec.describe ChangeTheSubject do
       end
     end
 
+    context "when there are two subdivisions not at the beginning of the string" do
+      let(:subject_terms) { ["Banks (Oceanography)—Alaska—Denali, Mount."] }
+      let(:fixed_subject_terms) { ["Banks (Oceanography)—Alaska—Denali, Mount", "Banks (Oceanography)—Alaska—McKinley, Mount"] }
+
+      it "changes the subdivision term" do
+        expect(described_class.fix(subject_terms: subject_terms)).to eq fixed_subject_terms
+      end
+    end
+
     context "when there is a period at the end of the term" do
       let(:subject_terms) { ["America, Gulf of.", "Mexico, Gulf of."] }
       let(:fixed_subject_terms) { ["Mexico, Gulf of", "America, Gulf of"] }
