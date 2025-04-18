@@ -110,6 +110,12 @@ main_term:
   "Mexico, Gulf of":
     replacement: ["Mexico, Gulf of", "America, Gulf of"]
     rationale: 'The term "Mexico, Gulf of" reflects literary warrant as well as colloquial usage patterns, and the term "America, Gulf of" is politically contested. PUL decided to display both the old and new versions of this LCSH heading.'
+  "America, Gulf of, Region":
+    replacement: ["Mexico, Gulf of, Region", "America, Gulf of, Region"]
+    rationale: 'The term "Mexico, Gulf of" reflects literary warrant as well as colloquial usage patterns, and the term "America, Gulf of" is politically contested. PUL decided to display both the old and new versions of this LCSH heading.'
+  "Mexico, Gulf of, Region":
+    replacement: ["Mexico, Gulf of, Region", "America, Gulf of, Region"]
+    rationale: 'The term "Mexico, Gulf of" reflects literary warrant as well as colloquial usage patterns, and the term "America, Gulf of" is politically contested. PUL decided to display both the old and new versions of this LCSH heading.'
   "Mount McKinley National Park Headquarters Historic District (Alaska)":
     replacement: ["Mount McKinley National Park Headquarters Historic District (Alaska)", "Denali National Park and Preserve Headquarters (Alaska)"]
     rationale: 'Denali is one of many long-standing Native names for this mountain, the name in common usage in Alaska, and the name with the most literary warrant. The Alaska Legislature has consistently requested that this mountain be called "Denali" since 1975, which was reaffirmed again in 2025. On the other hand, the name Mount McKinley had only been in use since 1896, in honor of a man who never set foot in Alaska or had any connection to the mountain. PUL decided to display both the old and new versions of this LCSH heading.'
@@ -134,6 +140,12 @@ subdivision:
     rationale: 'The term "Mexico, Gulf of" reflects literary warrant as well as colloquial usage patterns, and the term "America, Gulf of" is politically contested. PUL decided to display both the old and new versions of this LCSH heading.'
   "Mexico, Gulf of":
     replacement: ["Mexico, Gulf of", "America, Gulf of"]
+    rationale: 'The term "Mexico, Gulf of" reflects literary warrant as well as colloquial usage patterns, and the term "America, Gulf of" is politically contested. PUL decided to display both the old and new versions of this LCSH heading.'
+  "America, Gulf of, Region":
+    replacement: ["Mexico, Gulf of, Region", "America, Gulf of, Region"]
+    rationale: 'The term "Mexico, Gulf of" reflects literary warrant as well as colloquial usage patterns, and the term "America, Gulf of" is politically contested. PUL decided to display both the old and new versions of this LCSH heading.'
+  "Mexico, Gulf of, Region":
+    replacement: ["Mexico, Gulf of, Region", "America, Gulf of, Region"]
     rationale: 'The term "Mexico, Gulf of" reflects literary warrant as well as colloquial usage patterns, and the term "America, Gulf of" is politically contested. PUL decided to display both the old and new versions of this LCSH heading.'
   "Mexico, Gulf of, Watershed":
     replacement: ["Mexico, Gulf of, Watershed", "America, Gulf of, Watershed"]

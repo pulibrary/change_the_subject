@@ -37,6 +37,12 @@ main_term:
   "Mexico, Gulf of":
     replacement: ["Mexico, Gulf of", "America, Gulf of"]
     rationale: 'The term "Mexico, Gulf of" reflects literary warrant as well as colloquial usage patterns, and the term "America, Gulf of" is politically contested. PUL decided to display both the old and new versions of this LCSH heading.'
+  "America, Gulf of, Region":
+    replacement: ["Mexico, Gulf of, Region", "America, Gulf of, Region"]
+    rationale: 'The term "Mexico, Gulf of" reflects literary warrant as well as colloquial usage patterns, and the term "America, Gulf of" is politically contested. PUL decided to display both the old and new versions of this LCSH heading.'
+  "Mexico, Gulf of, Region":
+    replacement: ["Mexico, Gulf of, Region", "America, Gulf of, Region"]
+    rationale: 'The term "Mexico, Gulf of" reflects literary warrant as well as colloquial usage patterns, and the term "America, Gulf of" is politically contested. PUL decided to display both the old and new versions of this LCSH heading.'
   "Test term":
     replacement: ""
     rationale: "For testing purposes only"
@@ -46,6 +52,12 @@ subdivision:
     rationale: 'The term "Mexico, Gulf of" reflects literary warrant as well as colloquial usage patterns, and the term "America, Gulf of" is politically contested. PUL decided to display both the old and new versions of this LCSH heading.'
   "Mexico, Gulf of":
     replacement: ["Mexico, Gulf of", "America, Gulf of"]
+    rationale: 'The term "Mexico, Gulf of" reflects literary warrant as well as colloquial usage patterns, and the term "America, Gulf of" is politically contested. PUL decided to display both the old and new versions of this LCSH heading.'
+  "America, Gulf of, Region":
+    replacement: ["Mexico, Gulf of, Region", "America, Gulf of, Region"]
+    rationale: 'The term "Mexico, Gulf of" reflects literary warrant as well as colloquial usage patterns, and the term "America, Gulf of" is politically contested. PUL decided to display both the old and new versions of this LCSH heading.'
+  "Mexico, Gulf of, Region":
+    replacement: ["Mexico, Gulf of, Region", "America, Gulf of, Region"]
     rationale: 'The term "Mexico, Gulf of" reflects literary warrant as well as colloquial usage patterns, and the term "America, Gulf of" is politically contested. PUL decided to display both the old and new versions of this LCSH heading.'
   "Evacuation and relocation, 1942-1945":
     replacement: "Forced removal and internment, 1942-1945"
