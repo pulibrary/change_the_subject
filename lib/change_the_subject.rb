@@ -160,19 +160,8 @@ class ChangeTheSubject
   end
 
   def replacement_config_for_main_terms(subterms)
-    matching_key = main_term_mapping.keys.find do |term_to_replace|
-      term_matches_subterms?(term_to_replace, subterms)
-    end
-    main_term_mapping[matching_key] if matching_key
-  end
-
-  def term_matches_subterms?(term, subterms)
-    term_as_array = Array(term)
-    # byebug if term_as_array == ['Another subdivision for replacement']
-    term_as_array.count.times.all? do |index|
-      clean_subterm = subterms[index].delete_suffix(".")
-      term_as_array[index] == clean_subterm
-    end
+    normalized_search = subterms.first&.delete_suffix(".")
+    main_term_mapping[normalized_search]
   end
 
   def replacement_terms(configured_term)
