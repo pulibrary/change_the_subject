@@ -4,7 +4,7 @@ jobs:
     parameters:
       ruby:
         description: "Ruby version"
-        default: "3.3.6"
+        default: "4.0.2"
         type: "string"
     docker:
       - image: cimg/ruby:<< parameters.ruby >>
@@ -36,4 +36,4 @@ workflows:
       - test:
           matrix:
             parameters:
-              ruby: ["3.1.6", "3.2.6", "3.3.6", "3.4.1"]
+              ruby: ["3.3.10", "3.4.9", "4.0.2"]
