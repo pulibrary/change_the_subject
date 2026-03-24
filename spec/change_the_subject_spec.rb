@@ -34,6 +34,18 @@ RSpec.describe ChangeTheSubject do
       expect(described_class.check_for_replacement(term: "Indians of North America")).to eq("Indigenous peoples of North America")
       expect(described_class.check_for_replacement(term: "Gender identity disorders in adolescence")).to eq("Gender dysphoria in adolescence")
       expect(described_class.check_for_replacement(term: "Convict labor")).to eq("Prison labor")
+      expect(described_class.check_for_replacement(term: "Transsexuals")).to eq("Transsexual people")
+      expect(described_class.check_for_replacement(term: "Christian transsexuals")).to eq("Christian transsexual people")
+      expect(described_class.check_for_replacement(term: "Female-to-male transsexuals")).to eq("Female-to-male transsexual people")
+      expect(described_class.check_for_replacement(term: "Jewish transsexuals")).to eq("Jewish transsexual people")
+      expect(described_class.check_for_replacement(term: "Libraries and transsexuals")).to eq("Libraries and transsexual people")
+      expect(described_class.check_for_replacement(term: "Male-to-female transsexuals")).to eq("Male-to-female transsexual people")
+      expect(described_class.check_for_replacement(term: "Older transsexuals")).to eq("Older transsexual people")
+      expect(described_class.check_for_replacement(term: "Parents of transsexuals")).to eq("Parents of transsexual people")
+      expect(described_class.check_for_replacement(term: "Transsexuals in literature")).to eq("Transsexual people in literature")
+      expect(described_class.check_for_replacement(term: "Transsexuals in motion pictures")).to eq("Transsexual people in motion pictures")
+      expect(described_class.check_for_replacement(term: "Transsexuals' writings")).to eq("Transsexual people's writings")
+      expect(described_class.check_for_replacement(term: "Transsexuals' writings, American")).to eq("Transsexual people's writings, American")
     end
 
     it "suggests a replacement for subdivisions" do
