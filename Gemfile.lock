@@ -12,7 +12,7 @@ GEM
     coderay (1.1.3)
     diff-lcs (1.5.0)
     docile (1.4.0)
-    json (2.10.2)
+    json (2.19.9)
     language_server-protocol (3.17.0.4)
     lint_roller (1.1.0)
     method_source (1.0.0)
@@ -76,6 +76,7 @@ PLATFORMS
   x86_64-darwin-20
   x86_64-darwin-21
   x86_64-darwin-24
+  x86_64-linux
 
 DEPENDENCIES
   change_the_subject!
