@@ -170,6 +170,15 @@ main_term:
   "America, Gulf of, Watershed":
     replacement: ["Mexico, Gulf of, Watershed", "America, Gulf of, Watershed"]
     rationale: 'The term "Mexico, Gulf of" reflects literary warrant as well as colloquial usage patterns, and the term "America, Gulf of" is politically contested. PUL decided to display both the old and new versions of this LCSH heading.'
+  "America, Lake (N.Y. and Ont.)":
+    replacement: "Ontario, Lake (N.Y. and Ont.)"
+    rationale: 'Use common terminology'
+  "America, Lake, Region (N.Y. and Ont.)":
+    replacement: "Ontario, Lake, Region (N.Y. and Ont.)"
+    rationale: 'Use common terminology'
+  "America, Lake, Watershed (N.Y. and Ont.)":
+    replacement: "Ontario, Lake, Watershed (N.Y. and Ont.)"
+    rationale: 'Use common terminology'
 subdivision:
   "America, Gulf of":
     replacement: ["Mexico, Gulf of", "America, Gulf of"]
