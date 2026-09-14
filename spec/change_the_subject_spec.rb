@@ -46,6 +46,9 @@ RSpec.describe ChangeTheSubject do
       expect(described_class.check_for_replacement(term: "Transsexuals in motion pictures")).to eq("Transsexual people in motion pictures")
       expect(described_class.check_for_replacement(term: "Transsexuals' writings")).to eq("Transsexual people's writings")
       expect(described_class.check_for_replacement(term: "Transsexuals' writings, American")).to eq("Transsexual people's writings, American")
+      expect(described_class.check_for_replacement(term: "America, Lake (N.Y. and Ont.)")).to eq("Ontario, Lake (N.Y. and Ont.)")
+      expect(described_class.check_for_replacement(term: "America, Lake, Region (N.Y. and Ont.)")).to eq("Ontario, Lake, Region (N.Y. and Ont.)")
+      expect(described_class.check_for_replacement(term: "America, Lake, Watershed (N.Y. and Ont.)")).to eq("Ontario, Lake, Watershed (N.Y. and Ont.)")
     end
 
     it "suggests a replacement for subdivisions" do
